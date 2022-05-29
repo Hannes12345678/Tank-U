@@ -2,9 +2,8 @@ import socket
 from _thread import *
 import sys
 
-
-server = "192.168.178.96"  # WICHTIG: hier müsst ihr eure locale ip adresse einfügen
-port = 5555  # port mit welchen hier verbunden wird (ruter abhängig kann sein das es ein anderer ist)
+server = "192.168.178.96"
+port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -13,37 +12,35 @@ try:
 except socket.error as e:
     str(e)
 
-s.listen(2)  # die zahl bestimmt wie viele leute Connecten können, hier 2
-print("Warte auf Verbindung, Server wurde gestartet")
+s.listen(2)
+print("Waiting for a connection, Server Started")
 
 
 def threaded_client(conn):
-
+    conn.send(str.encode("Connected"))
     reply = ""
     while True:
         try:
             data = conn.recv(2048)
-            reply= data.decode("utf-8")
+            reply = data.decode("utf-8")
 
             if not data:
                 print("Disconnected")
                 break
             else:
                 print("Received: ", reply)
-                print("Sending: ", reply)
+                print("Sending : ", reply)
 
             conn.sendall(str.encode(reply))
         except:
             break
 
-    print("Verbindung abgebrochen")
+    print("Lost connection")
     conn.close()
 
 
-
 while True:
-    conn, addr =s.accept()
-    print("Verbunden mit: ", addr)
+    conn, addr = s.accept()
+    print("Connected to:", addr)
 
-    start_new_thread(threaded_client,  (conn,))
-
+    start_new_thread(threaded_client, (conn,))
