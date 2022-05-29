@@ -35,6 +35,9 @@ def threaded_client(conn):
         except:
             break
 
+    print("Verbindung abgebrochen")
+    conn.close()
+
 
 
 while True:
