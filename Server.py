@@ -3,7 +3,7 @@ from _thread import *
 import sys
 
 
-server = "192.168.2.108"  # WICHTIG: hier müsst ihr eure locale ip adresse einfügen
+server = "192.168.178.96"  # WICHTIG: hier müsst ihr eure locale ip adresse einfügen
 port = 5555  # port mit welchen hier verbunden wird (ruter abhängig kann sein das es ein anderer ist)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -18,7 +18,6 @@ print("Warte auf Verbindung, Server wurde gestartet")
 
 
 def threaded_client(conn):
-    conn.send(str.encode("Verbunden"))
 
     reply = ""
     while True:
