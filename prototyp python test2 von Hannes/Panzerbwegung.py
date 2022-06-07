@@ -2,13 +2,10 @@ import pygame
 
 
 class Player():
-    def __init__(self, x, y, height, width,color):
+    def __init__(self, x, y, tank):
         self.x = x
         self.y = y
-        self.height =height
-        self.color =color
-        self.width = width
-        self.tank = (x,y,width,height)
+        self.tank = pygame.image.load("Blue-Tank-V1.png")
         self.vel = 5
        # self.turr = pygame.image.load("Blue-tank-Kanone-v1-nutzen")
         #self.vel2 = 0.5

@@ -19,7 +19,7 @@ s.listen(2)
 print("Waiting for a connection, Server Started")
 
 
-players = [Player(50, 0, 50, 50(255,0,0)), Player(100,100, 50,50(0,255,0))]
+players = [Player(50, 0, pygame.image.load("Blue-Tank-V1.png")), Player(100,100,pygame.image.load("Blue-Tank-V1.png"))]
 
 
 def threaded_client(conn, player):
