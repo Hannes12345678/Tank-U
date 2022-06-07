@@ -1,7 +1,9 @@
 import socket
 from _thread import *
-from newPlayer import Player
+from Panzerbwegung import Player
 import pickle
+import pygame
+
 
 server = "192.168.2.100"
 port = 5555
@@ -17,7 +19,8 @@ s.listen(2)
 print("Waiting for a connection, Server Started")
 
 
-players = [Player(0,0,50,50,(255,0,0)), Player(100,100, 50,50, (0,0,255))]
+players = [Player(50, 0, 50, 50(255,0,0)), Player(100,100, 50,50(0,255,0))]
+
 
 def threaded_client(conn, player):
     conn.send(pickle.dumps(players[player]))
