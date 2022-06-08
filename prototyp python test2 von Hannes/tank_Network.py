@@ -28,3 +28,5 @@ class Network:
             return pickle.loads(self.client.recv(8192))
         except socket.error as e:
             print(e)
+
+#manchmal sind wir richtig smart aber eigentlich nicht

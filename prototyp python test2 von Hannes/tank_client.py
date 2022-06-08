@@ -2,8 +2,8 @@ import pygame
 from tank_Network import Network
 from Panzerbwegung import Player
 
-width = 800
-height = 400
+width = 1000
+height = 500
 win = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Client")
 blauer_panzer = pygame.image.load("Blue-Tank-V1.png")
