@@ -1,6 +1,7 @@
 import socket
 from _thread import *
 from Panzerbwegung import Player
+from Panzerbwegung import Turret
 import pickle
 import pygame
 
@@ -24,13 +25,16 @@ print("Waiting for a connection, Server Started")
 players = [Player(100,200,0,0,(255,0,0)), Player(600, 200, 0,0,(0,0,255))]
 
 
+
 def threaded_client(conn, player):
     conn.send(pickle.dumps(players[player]))
+
     reply = ""
     while True:
         try:
             data = pickle.loads(conn.recv(8192))
             players[player] = data
+
 
             if not data:
                 print("Disconnected")
@@ -40,11 +44,11 @@ def threaded_client(conn, player):
                     reply = players[0]
                 else:
                     reply = players[1]
-
                 print("Received: ", data)
                 print("Sending : ", reply)
 
             conn.sendall(pickle.dumps(reply))
+
         except:
             break
 

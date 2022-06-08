@@ -28,11 +28,13 @@ def main():
     run = True
     n = Network()
     p = n.getP()
+    t = n.getP()
     clock = pygame.time.Clock()
 
     while run:
         clock.tick(30)  #30 fps kamen von Konrad und Hannes deshalb ok wenn die Idee von Willi käme dann hätten wäre es fatal und falsch
         p2 = n.send(p)
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -40,12 +42,16 @@ def main():
                 pygame.quit()
 
         p.tank_move()
+
+
+
         print(p)
         print(p2)
         print(p.x)
         print(p.y)
         print(p2.x)
         print(p2.y)
+        print(t)
         redrawWindow(win, p, p2)
         win.blit(blaues_hartes_ding, (p.x + 15 , p.y ))
         win.blit(rotes_hartes_ding_turned, (p2.x + 15, p2.y +75))
