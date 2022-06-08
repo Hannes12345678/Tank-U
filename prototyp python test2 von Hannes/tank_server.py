@@ -58,4 +58,3 @@ while True:
 
     start_new_thread(threaded_client, (conn, currentPlayer))
     currentPlayer += 1
-#gay

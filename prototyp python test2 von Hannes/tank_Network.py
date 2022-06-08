@@ -29,4 +29,3 @@ class Network:
         except socket.error as e:
             print(e)
 
-#manchmal sind wir richtig smart aber eigentlich nicht

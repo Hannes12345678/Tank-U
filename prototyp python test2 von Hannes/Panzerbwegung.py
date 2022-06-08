@@ -11,7 +11,7 @@ class Player():
         self.rect = (x, y, width, height)
         self.vel = 5
        # self.turr = pygame.image.load("Blue-tank-Kanone-v1-nutzen")
-        #self.vel2 = 0.5 WIlli nervt manchmal
+        #self.vel2 = 0.5
 
     def draw(self, win):
         pygame.draw.rect(win, self.color, self.rect)
