@@ -43,31 +43,3 @@ class Player():
         self.turr = self.y
 
 
-class Turret():
-    def __init__(self, x, y, height, width, color):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.color = color
-        self.rect = (x, y, width, height)
-        self.vel = 5
-        self.vel2 = 0.5
-
-    def draw(self, win):
-        pygame.draw.rect(win, self.color, self.rect)
-
-    def turret_move(self):
-        keys = pygame.key.get_pressed()
-
-        if keys[pygame.K_UP]:
-            self.y += self.vel2
-
-        if keys[pygame.K_DOWN]:
-            self.y -= self.vel2
-
-        self.update()
-
-    def update(self):
-        self.rect = (self.x, self.y, self.width, self.height)
-        self.turr = self.y

@@ -1,7 +1,6 @@
 import socket
 from _thread import *
 from Panzerbwegung import Player
-from Panzerbwegung import Turret
 import pickle
 import pygame
 

@@ -44,7 +44,6 @@ def main():
         p.tank_move()
 
 
-
         print(p)
         print(p2)
         print(p.x)
