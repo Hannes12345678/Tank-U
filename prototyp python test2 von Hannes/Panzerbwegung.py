@@ -2,13 +2,20 @@ import pygame
 
 
 class Player():
-    def __init__(self, x, y, tank):
+    def __init__(self, x, y, height, width, color):
         self.x = x
         self.y = y
-        self.tank = pygame.image.load("Blue-Tank-V1.png")
+        self.width = width
+        self.height = height
+        self.color = color
+        self.rect = (x, y, width, height)
         self.vel = 5
        # self.turr = pygame.image.load("Blue-tank-Kanone-v1-nutzen")
         #self.vel2 = 0.5
+
+    def draw(self, win):
+        pygame.draw.rect(win, self.color, self.rect)
+
 
     def tank_move(self):
         keys = pygame.key.get_pressed()
@@ -18,6 +25,12 @@ class Player():
 
         if keys[pygame.K_RIGHT]:
             self.x += self.vel
+
+        if keys[pygame.K_UP]:
+            self.y -= self.vel
+
+        if keys[pygame.K_DOWN]:
+            self.y += self.vel
 
         self.update()
 
@@ -33,6 +46,6 @@ class Player():
       #  self.update()
 
     def update(self):
-        self.tank = self.x
+        self.rect = (self.x, self.y, self.width, self.height)
         #self.turr = self.y
 

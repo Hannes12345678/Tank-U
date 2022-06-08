@@ -5,6 +5,7 @@ import pickle
 import pygame
 
 
+
 server = "192.168.2.100"
 port = 5555
 
@@ -19,7 +20,8 @@ s.listen(2)
 print("Waiting for a connection, Server Started")
 
 
-players = [Player(50, 0, pygame.image.load("Blue-Tank-V1.png")), Player(100,100,pygame.image.load("Blue-Tank-V1.png"))]
+
+players = [Player(0,0,50,50,(255,0,0)), Player(100,100, 50,50,(0,0,255))]
 
 
 def threaded_client(conn, player):
