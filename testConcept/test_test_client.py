@@ -7,7 +7,8 @@ clock = pygame.time.Clock()
 FPS = 60 # sollte fix so bleiben
 
 sky_surface = pygame.image.load('übungs-texturen Kopie/Sky.png')
-ground_surface =
+ground_surface = pygame.image.load('übungs-texturen Kopie/ground.png')
+
 
 while True:
     for event in pygame.event.get():
@@ -15,6 +16,7 @@ while True:
             pygame.quit()
             exit()
     screen.blit(sky_surface, (0,0))
+    screen.blit(ground_surface,(0,300) )
 
     pygame.display.update()
     clock.tick(FPS)
