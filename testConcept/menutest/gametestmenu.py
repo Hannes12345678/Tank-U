@@ -17,7 +17,7 @@ class Game():
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
-
+#heheha
     def game_loop(self):
         while self.playing:
             self.check_events()
