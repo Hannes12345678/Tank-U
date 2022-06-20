@@ -1,7 +1,7 @@
 import pygame
 import Knopfklasse
 from subprocess import call
-#kkjkjk
+#kkjkjk kkkkkjkjkjk
 class CallFile(object):
     def __init__(self, path=''):
         self.path =path
