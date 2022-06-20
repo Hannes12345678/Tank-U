@@ -1,5 +1,12 @@
 import pygame
 import Knopfklasse
+from subprocess import call
+
+class CallFile(object):
+    def __init__(self, path=''):
+        self.path =path
+    def call_python_file(self):
+        call(['Python3', '{}'.format(self.path)])
 
 #display fester erstellen
 import pygame.math
@@ -33,6 +40,13 @@ while run:
 #screen wird hier benutzt damit es aus knopf aufgerufen werden kann
     if start_knopf.draw(screen) == True:
         print("Start")
+        cc = CallFile('/Users/konradfirley/Desktop/Tank-U/prototyp python test2 von Hannes/tank_server.py')
+        cc.call_python_file()  # ihr müsst in CallFile euren weg linken zur entsprechenden file (hier tank_serve.py)
+       # c = CallFile('/Users/konradfirley/Desktop/Tank-U/prototyp python test2 von Hannes/tank_client.py')
+       # c.call_python_file()
+
+
+        run = False
     if exit_knopf.draw(screen) == True:
         print("Exit")
         run = False
