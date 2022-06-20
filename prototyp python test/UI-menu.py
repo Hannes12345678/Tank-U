@@ -11,15 +11,15 @@ pygame.display.set_caption('TANK-U')
 
 #knopf foto ( hier panzer weil hab knopf noch nicht gemacht)
 
-start_img = pygame.image.load('Pixelart/red-tank-v1-benutzen.png')
-exit_img = pygame.image.load('Pixelart/Blue-Tank-V1.png')
+start_img = pygame.image.load('Pixelart/startknopf.png')
+exit_img = pygame.image.load('Pixelart/exitknopf.png')
 logo_img = pygame.image.load('Pixelart/Logo-Tank_u-nutzbar-v1.png')
 
 
 #knopf erstellen [x und y ] position, welches bild, skallierung des bildes
 
-start_knopf = Knopfklasse.knopf(100, 200, start_img, 2.0)
-exit_knopf = Knopfklasse.knopf(450, 200, exit_img, 1.2)
+start_knopf = Knopfklasse.knopf(284, 220, start_img, 2.0)
+exit_knopf = Knopfklasse.knopf(348, 350, exit_img, 1.0)
 logo_img = Knopfklasse.knopf(190, 50, logo_img, 1.5 )
 
 
@@ -32,9 +32,9 @@ while run:
     logo_img.draw(screen)
 #screen wird hier benutzt damit es aus knopf aufgerufen werden kann
     if start_knopf.draw(screen) == True:
-        print("roterpanzer")
+        print("Start")
     if exit_knopf.draw(screen) == True:
-        print("blauepanzer")
+        print("Exit")
         run = False
 
     #kümmer sich um das event
