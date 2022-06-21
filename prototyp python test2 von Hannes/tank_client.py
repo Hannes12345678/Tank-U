@@ -33,7 +33,7 @@ def main():
     t = n.getP()
     clock = pygame.time.Clock()
 
-    barrelrotation = 0
+    barrelrotation = 180
     while run:
         clock.tick(20)  #30 fps kamen von Konrad und Hannes deshalb ok wenn die Idee von Willi käme dann hätten wäre es fatal und falsch
         p2 = n.send(p)
@@ -54,26 +54,48 @@ def main():
         print(p2.x)
         print(p2.y)
         redrawWindow(win, p, p2)
-        blaueshartesding = pygame.transform.rotate(blaues_hartes_ding, barrelrotation)
-
-        keys = pygame.key.get_pressed()
-
-        if keys[pygame.K_UP]:
-            barrelrotation = barrelrotation -5
-
-        if keys[pygame.K_DOWN]:
-            barrelrotation = barrelrotation +5
 
 
 
 
-        win.blit(blaueshartesding, ( p.x + 45 - int(blaueshartesding.get_width() / 2), p.y + 80 - int(blaueshartesding.get_height() / 2)))
+        if p.id == "Player 1":
+            win.blit(roter_panzer, (p2.x, p2.y + 116))
+            win.blit(blauer_panzer, (p.x, p.y + 120))
+
+        if p.id == "Player 2":
+            win.blit(roter_panzer, (p.x, p.y + 116))
+            win.blit(blauer_panzer, (p2.x, p2.y + 120))
 
 
-        win.blit(rotes_hartes_ding_turned, (p2.x + 15, p2.y +75))
-        win.blit(roter_panzer, (p2.x, p2.y))
-        win.blit(blauer_panzer, (p.x, p.y))
+        if p.id == "Player 1":
+            blaueshartesding = pygame.transform.rotate(blaues_hartes_ding_turned, barrelrotation)
+            keys = pygame.key.get_pressed()
+
+            if keys[pygame.K_UP] and barrelrotation <= 230:
+                barrelrotation = barrelrotation + 5
+
+            if keys[pygame.K_DOWN] and barrelrotation >= 180:
+                barrelrotation = barrelrotation - 5
+
+            win.blit(blaueshartesding, (p.x + 85- int(blaueshartesding.get_width() / 2), p.y + 75 + 120 - int(blaueshartesding.get_height() / 2)))
+
+            win.blit(rotes_hartes_ding_turned, (p2.x + 15, p2.y + 75 + 116))
+            print(barrelrotation)
 
 
+        if p.id == "Player 2":
+
+            roteshartesding = pygame.transform.rotate(rotes_hartes_ding, barrelrotation)
+            keys = pygame.key.get_pressed()
+
+            if keys[pygame.K_UP] and barrelrotation > 120:
+                barrelrotation = barrelrotation - 5
+
+            if keys[pygame.K_DOWN] and barrelrotation <= 180:
+                barrelrotation = barrelrotation + 5
+
+            win.blit(blaues_hartes_ding,(p2.x+ 20 , p2.y +120))
+            win.blit(roteshartesding, (p.x +35 - int(roteshartesding.get_width() / 2), p.y + 90 + 116 - int(roteshartesding.get_height() / 2)))
+            print(barrelrotation)
         pygame.display.update()
 #main() habe es in kommentar gesetzt damit man bei ui testen kann

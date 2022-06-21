@@ -2,12 +2,13 @@ import pygame
 
 
 class Player():
-    def __init__(self, x, y, height, width, color):
+    def __init__(self, x, y, height, width, color, id):
         self.x = x
         self.y = y
         self.width = width
         self.height = height
         self.color = color
+        self.id = id
         self.rect = (x, y, width, height)
         self.vel = 5
         self.vel2 = 0.5

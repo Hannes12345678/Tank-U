@@ -6,7 +6,7 @@ import pygame
 
 
 
-server = "192.168.2.108"
+server = "192.168.2.100"
 port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -21,7 +21,7 @@ print("Waiting for a connection, Server Started")
 
 
 
-players = [Player(100,200,0,0,(255,0,0)), Player(600, 200, 0,0,(0,0,255))]
+players = [Player(100,200,0,0,(255,0,0), "Player 1"), Player(600, 200, 0,0,(0,0,255), "Player 2")]
 
 
 
