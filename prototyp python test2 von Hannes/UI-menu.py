@@ -40,7 +40,8 @@ while run:
     if start_knopf.draw(screen) == True:
         print("Start")
 
-        main() # startet den client
+        main()
+        #startet den client
 
 #ggg
 

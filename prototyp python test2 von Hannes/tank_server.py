@@ -21,7 +21,7 @@ print("Waiting for a connection, Server Started")
 
 
 
-players = [Player(100,200,0,0,(255,0,0)), Player(600, 200, 0,0,(0,0,255))]
+players = [Player(100,200,0,0,(255,0,0), "Player 1"), Player(600, 200, 0,0,(0,0,255), "Player 2")]
 
 
 

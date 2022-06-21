@@ -1,13 +1,16 @@
 import pygame
 
 
-class Player():
-    def __init__(self, x, y, height, width, color):
+
+
+class Player():   #alles hier wird an den server gesendet
+    def __init__(self, x, y, height, width, color, id):
         self.x = x
         self.y = y
         self.width = width
         self.height = height
         self.color = color
+        self.id = id
         self.rect = (x, y, width, height)
         self.vel = 5
         self.vel2 = 0.5
@@ -41,5 +44,13 @@ class Player():
     def update(self):
         self.rect = (self.x, self.y, self.width, self.height)
         self.turr = self.y
+
+
+
+
+
+
+
+# bullet_gruppe =pygame.sprite.Group() muss noch irgendwo rein gemacht werden
 
 
