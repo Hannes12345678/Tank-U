@@ -47,7 +47,7 @@ while run:
        # cc = CallFile('/Users/konradfirley/Desktop/Tank-U/prototyp python test2 von Hannes/tank_server.py')
         # cc.call_python_file()  # ihr müsst in CallFile euren weg linken zur entsprechenden file (hier tank_serve.py)
         tank_client.main()
-
+#ggg
 
 
 

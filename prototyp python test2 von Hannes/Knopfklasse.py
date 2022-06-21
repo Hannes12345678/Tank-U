@@ -9,7 +9,7 @@ class knopf():
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
         self.clicked = False
-
+#ddd
     def draw(self, surface):
         action = False
         #maus position
