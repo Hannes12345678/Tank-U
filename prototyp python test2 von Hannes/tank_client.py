@@ -13,10 +13,11 @@ blaues_hartes_ding.set_colorkey((255,255,255))
 rotes_hartes_ding = pygame.image.load("red-tank-kanone-v1-nutzen.png")
 blaues_hartes_ding_turned = pygame.image.load("Blue-Kanone-turned.png")
 rotes_hartes_ding_turned = pygame.image.load("red-Kanone-turned.png")
-
+hinter_grundussus = pygame.image.load('hintergrund.png')
 
 def redrawWindow(win, player, player2):
     win.fill((255, 255, 255))
+    win.blit(hinter_grundussus,(0,0))
 
     player.draw(win)
     player2.draw(win)
@@ -34,7 +35,7 @@ def main():
 
     barrelrotation = 0
     while run:
-        clock.tick(30)  #30 fps kamen von Konrad und Hannes deshalb ok wenn die Idee von Willi käme dann hätten wäre es fatal und falsch
+        clock.tick(20)  #30 fps kamen von Konrad und Hannes deshalb ok wenn die Idee von Willi käme dann hätten wäre es fatal und falsch
         p2 = n.send(p)
 
 
@@ -75,4 +76,4 @@ def main():
 
 
         pygame.display.update()
-main()
+#main() habe es in kommentar gesetzt damit man bei ui testen kann

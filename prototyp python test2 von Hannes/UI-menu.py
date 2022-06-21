@@ -1,22 +1,17 @@
 import pygame
 import Knopfklasse
 from subprocess import call
-import tank_client
-import tank_server
+from tank_client import main
+
+
 import Panzerbwegung
 
-#kkjkjk kkkkkjkjkjk
-class CallFile(object):
-    def __init__(self, path=''):
-        self.path =path
-    def call_python_file(self):
-        call(['Python3', '{}'.format(self.path)])
 #tt
 #display fester erstellen
 import pygame.math
 
-SCREEN_HEIGHT = 500
-SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 501
+SCREEN_WIDTH = 1001
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('TANK-U')
 
@@ -45,7 +40,7 @@ while run:
     if start_knopf.draw(screen) == True:
         print("Start")
 
-        tank_client.main()
+        main() # startet den client
 
 #ggg
 
