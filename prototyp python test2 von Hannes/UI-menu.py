@@ -11,7 +11,7 @@ class CallFile(object):
         self.path =path
     def call_python_file(self):
         call(['Python3', '{}'.format(self.path)])
-
+#tt
 #display fester erstellen
 import pygame.math
 
@@ -44,9 +44,9 @@ while run:
 #screen wird hier benutzt damit es aus knopf aufgerufen werden kann
     if start_knopf.draw(screen) == True:
         print("Start")
-       # cc = CallFile('/Users/konradfirley/Desktop/Tank-U/prototyp python test2 von Hannes/tank_server.py')
-        # cc.call_python_file()  # ihr müsst in CallFile euren weg linken zur entsprechenden file (hier tank_serve.py)
+
         tank_client.main()
+
 #ggg
 
 
