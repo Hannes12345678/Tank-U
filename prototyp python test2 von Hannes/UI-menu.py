@@ -1,6 +1,9 @@
 import pygame
 import Knopfklasse
 from subprocess import call
+import tank_client
+import tank_server
+import Panzerbwegung
 
 #kkjkjk kkkkkjkjkjk
 class CallFile(object):
@@ -41,8 +44,9 @@ while run:
 #screen wird hier benutzt damit es aus knopf aufgerufen werden kann
     if start_knopf.draw(screen) == True:
         print("Start")
-        cc = CallFile('/Users/konradfirley/Desktop/Tank-U/prototyp python test2 von Hannes/tank_server.py')
-        cc.call_python_file()  # ihr müsst in CallFile euren weg linken zur entsprechenden file (hier tank_serve.py)
+       # cc = CallFile('/Users/konradfirley/Desktop/Tank-U/prototyp python test2 von Hannes/tank_server.py')
+        # cc.call_python_file()  # ihr müsst in CallFile euren weg linken zur entsprechenden file (hier tank_serve.py)
+        tank_client.main()
 
 
 
