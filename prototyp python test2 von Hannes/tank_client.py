@@ -1,7 +1,7 @@
 import pygame
 from tank_Network import Network
 from Panzerbwegung import Player
-
+#gegege
 width = 1001
 height = 501
 win = pygame.display.set_mode((width, height))

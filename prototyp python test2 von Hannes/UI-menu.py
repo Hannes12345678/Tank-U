@@ -9,7 +9,7 @@ import Panzerbwegung
 #tt
 #display fester erstellen
 import pygame.math
-
+#jjjj
 SCREEN_HEIGHT = 501
 SCREEN_WIDTH = 1001
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))

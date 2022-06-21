@@ -1,6 +1,6 @@
 import pygame
 
-
+#jjj
 class knopf():
     def __init__(self, x, y, image, scale):
         width = image.get_width()
