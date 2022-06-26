@@ -30,7 +30,7 @@ logo_img = Knopfklasse.knopf(190, 50, logo_img, 1.5 )
 
 
 #loop
-#d
+#ddddd
 run = True
 while run:
 

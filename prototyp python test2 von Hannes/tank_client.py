@@ -56,7 +56,7 @@ def redrawWindow(win, player, player2):
 
 
 
-#dd
+#ddd
 def main():
     run = True
     n = Network()

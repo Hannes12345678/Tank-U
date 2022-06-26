@@ -1,7 +1,7 @@
 import pygame
 
 
-#d
+#ddd
 
 class Player():   #alles hier wird an den server gesendet
     def __init__(self, x, y, height, width, color, id):
