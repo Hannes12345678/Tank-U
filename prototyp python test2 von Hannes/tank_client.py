@@ -1,18 +1,22 @@
 import pygame
 from tank_Network import Network
 from Panzerbwegung import *
-
+import pygame
+import Knopfklasse
+import pygame.math
 #gegege
 
 n = Network()
 p = n.getP()
 t = n.getP()
-
 bullety = p.y
 bulletx = p.x
 
+bullet_state = False
+bullet_shoot = False
 
 
+#muss wurf distanz berechnen
 
 
 
@@ -34,32 +38,43 @@ hinter_grundussus = pygame.image.load('hintergrund.png')
 
 bullet_group = pygame.sprite.Group()
 
-bullet_state = False
-
-"""class Bullegame():
-    def create_bullet(self, x, y):    #hab autismuss teste hier was 
-        self.x = x
-        self.y = y
-        return Bullet(self.x + 10, self.y + 10)
 
 
-class Bullet(pygame.sprite.Sprite):
-    # hier wird ein neuer würfel für die bullets gemacht
-    def __init__(self, x, y):
-        super().__init__()
-        self.image = pygame.Surface((50, 10))
-        self.image.fill((255, 0, 0))
-        self.rect = self.image.rect(x, y)
+#display fester erstellen
+import pygame.math
+#jjjj
+SCREEN_HEIGHT = height
+SCREEN_WIDTH = width
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption('TANK-U')
 
-    def update(self):
-        self.rect.x += 5"""
+#knopf foto ( hier panzer weil hab knopf noch nicht gemacht)
+
+start_img = pygame.image.load('Pixelart/startknopf.png')
+exit_img = pygame.image.load('Pixelart/exitknopf.png')
+logo_img = pygame.image.load('Pixelart/Logo-Tank_u-nutzbar-v1.png')
+
+
+#knopf erstellen [x und y ] position, welches bild, skallierung des bildes
+
+start_knopf = Knopfklasse.knopf(284, 220, start_img, 2.0)
+exit_knopf = Knopfklasse.knopf(348, 350, exit_img, 1.0)
+logo_img = Knopfklasse.knopf(190, 50, logo_img, 1.5 )
+
 
 
 
 def fire_bullet(x,y):
     global bullet_state
+
     bullet_state = True
-    win.blit(runde_kugel,(x+60 , y+55) )
+    win.blit(runde_kugel,(x+90  , y+55) )
+
+def stop_bullet():
+    global bullet_state
+    bullet_state = False
+
+
 
 
 
@@ -145,14 +160,30 @@ def main():
             win.blit(rotes_hartes_ding_turned, (p2.x + 15, p2.y + 75 ))
             #print(barrelrotation)
 
+
             if keys[pygame.K_SPACE]:
                 print('Hello i am under the water')
 
-                fire_bullet(bulletx , p.y )
+
+                fire_bullet(p.x , p.y )
 
             if bullet_state is True:
-                 bulletx = bulletx + 20
-                 fire_bullet(bulletx, p.y)
+                 variX = 0
+                 bulletx = p.x + 20
+                 bullet_shoot = True
+
+                 while bullet_shoot:   #while variX < 900 V1.0 schuss geht gerade aus
+                     variX = variX + 10
+                     fire_bullet(bulletx + variX, p.y)
+                     if variX > 900:
+                         bullet_shoot = False
+                         stop_bullet()
+
+
+
+
+
+
 
 
 
@@ -180,3 +211,36 @@ def main():
             #print(barrelrotation)
         pygame.display.update()
 #main() habe es in kommentar gesetzt damit man bei ui testen kann
+
+
+
+
+run = True
+while run:
+
+    screen.fill((0, 0, 0))
+    logo_img.draw(screen)
+#screen wird hier benutzt damit es aus knopf aufgerufen werden kann
+    if start_knopf.draw(screen) == True:
+        print("Start")
+
+        main()
+        #startet den client
+
+#ggg
+
+
+
+    if exit_knopf.draw(screen) == True:
+        print("Exit")
+        run = False
+
+    #kümmer sich um das event
+    for event in pygame.event.get():
+        #quit game
+        if event.type == pygame.QUIT:
+            run = False
+
+    pygame.display.update()
+
+pygame.quit()

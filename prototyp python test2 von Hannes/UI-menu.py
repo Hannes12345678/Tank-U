@@ -5,7 +5,12 @@ from tank_client import main
 
 
 import Panzerbwegung
-
+"""
+########################################################################################################################
+!WICHTIG!: UI-menu.py ist jetzt eingebaut im tank_client -> Spiel nur über tank_client starten sonst funtioniert die 
+ schieß logic nicht mehr ! - K 
+ #######################################################################################################################
+ """
 #tt
 #display fester erstellen
 import pygame.math
