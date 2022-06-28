@@ -286,7 +286,7 @@ def main():
 
                 fire_bullet(p.x , p.y )
                 distanz = 0
-#hhhh
+#hhhhurfrujfu
 
             if bullet_state is True:
 
