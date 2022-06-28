@@ -16,7 +16,7 @@ t = n.getP()
 #bullet variablen (können später gemacht werden )
 bullety = p.y
 bulletx = p.x
-bullet_staerke = 5
+bullet_staerke = 15 # hier immer ungerade
 
 bullet_state = False
 bullet_shoot = False
@@ -110,17 +110,17 @@ def stop_bullet():
 
 def bullet_weite():
     global bullet_staerke
-    bullet_staerke = bullet_staerke + 1
+    bullet_staerke = bullet_staerke + 2
 
-    sxs = 10
+    sxs = 250
     if bullet_staerke > sxs:
-        bullet_staerke = bullet_staerke - 1
+        bullet_staerke = bullet_staerke - 2
 def bullet_kurz():
     global bullet_staerke
-    bullet_staerke = bullet_staerke - 1
+    bullet_staerke = bullet_staerke - 2
 
-    if bullet_staerke < 1:
-        bullet_staerke = bullet_staerke + 1
+    if bullet_staerke < 5:
+        bullet_staerke = bullet_staerke + 2
 
 def redrawWindow(win, player, player2):
     win.fill((255, 255, 255))
@@ -161,7 +161,7 @@ def main():
 
         #print(p)
         #print(p2)
-        print(p.x)
+        #print(p.x)
         #print(p.y)
         #print(p2.x)
         #print(p2.y)
@@ -213,10 +213,11 @@ def main():
 
 
             if keys[pygame.K_SPACE]:
-                print('Hello i am under the water')
+               # print('Hello i am under the water')
 
 
                 fire_bullet(p.x , p.y )
+                distanz = 0
 
 
             if bullet_state is True:
@@ -228,21 +229,22 @@ def main():
 
                  while bullet_shoot:      #while variX < 900 V1.0 schuss geht gerade aus
                      #hier for loop
-                     distanz = 0
-                     for x in range(bullet_staerke) :
+                     #distanz =0
+
+                     for x in range(bullet_staerke * 2) :
 
                         variX = variX + 5
 
-                        distanz = distanz + 1
+                        distanz = distanz + 2
 
                      # if  else für ab hälfte das andere
-                        if distanz < (bullet_staerke / 2 ):
+                        if distanz < (bullet_staerke  ):
                             variY = variY - 5
                             fire_bullet(bulletx + variX, bullety + variY)
-                        elif distanz >= (bullet_staerke / 2 ):# and distanz != (bullet_staerke*4)
-                            variY = variY + 5
+                        elif distanz > (bullet_staerke  ):# and distanz != (bullet_staerke*4)
+                            variY = variY + 10
                             fire_bullet(bulletx + variX, bullety + variY)
-                        else:
+                        elif distanz == bullet_staerke:
 
                             bullet_shoot = False
                             stop_bullet()
