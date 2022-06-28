@@ -237,6 +237,7 @@ def main():
         if p.id == "Player 1":
             blaueshartesding = pygame.transform.rotate(blaues_hartes_ding_turned, barrelrotation)
             keys = pygame.key.get_pressed()
+            barrelrotation = 230
 
 
             variX = 0 #wie stark das zeug ist bzw winkel
@@ -346,6 +347,11 @@ def main():
             roteshartesding = pygame.transform.rotate(rotes_hartes_ding, barrelrotation)
             keys = pygame.key.get_pressed()
 
+            variX = 0  # wie stark das zeug ist bzw winkel
+            variY = 0
+            # faky = 0  # faktoren der fariabelnen für x und y
+            # fakx = 0
+
             if keys[pygame.K_UP] and barrelrotation > 120:
                 barrelrotation = barrelrotation - 5
 
@@ -355,6 +361,81 @@ def main():
             win.blit(blaues_hartes_ding,(p2.x+ 20 , p2.y +120))
             win.blit(roteshartesding, (p.x +35 - int(roteshartesding.get_width() / 2), p.y + 90 + 116 - int(roteshartesding.get_height() / 2)))
             #print(barrelrotation)
+
+            if keys[pygame.K_w]:  #flugdauer + bzw vershiebt den hochpunkt
+                bullet_weite()
+                #print('Staerke: '+ bullet_staerke)
+
+            if keys[pygame.K_s]: #flugdauer -
+                bullet_kurz()
+                #print('Staerke: '+ bullet_staerke)
+
+            if keys[pygame.K_q]:
+                bullet_grad_plus()
+                #print('Winkel: '+ bullet_winkel)
+
+            if keys[pygame.K_a]:
+                bullet_grad_minus()
+                #print('Winkel: '+bullet_winkel)
+            if keys[pygame.K_r]:
+                reset_bullet_trajectory()
+                barrelrotation = 230
+
+
+
+            if keys[pygame.K_SPACE]:
+               # print('Hello i am under the water')
+
+
+                fire_bullet(p2.x , p2.y )
+                distanz = 0
+
+
+            if bullet_state is True:
+
+                 bulletx = p2.x
+                 bullety = p2.y
+                 bullet_shoot = True
+
+                 while bullet_shoot:      #while variX < 900 V1.0 schuss geht gerade aus
+                     #hier for loop
+                     #distanz =0
+
+                     for x in range(bullet_staerke * 2) :
+
+                        variX = variX - (fakx)
+
+                        distanz = distanz + 2
+
+                     # if  else für ab hälfte das andere
+                        if distanz < (bullet_staerke  ):
+                            variY = variY - (faky)
+                            fire_bullet(bulletx + variX, bullety + variY)
+                        elif distanz > (bullet_staerke  ):# and distanz != (bullet_staerke*4)
+                            variY = variY + (faky) #war mal 5
+                            fire_bullet(bulletx + variX, bullety + variY)
+                        elif distanz == bullet_staerke:
+
+                            bullet_shoot = False
+                            stop_bullet()
+                            break
+
+
+
+
+
+                     fire_bullet(bulletx + variX, bullety + variY)
+                     if variX > 400:
+                         bullet_shoot = False
+                         stop_bullet()
+
+
+
+
+
+
+
+
         pygame.display.update()
 #main() habe es in kommentar gesetzt damit man bei ui testen kann
 
