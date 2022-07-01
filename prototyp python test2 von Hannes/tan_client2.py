@@ -422,7 +422,7 @@ def main():
 
 
 
-        if p.id == "Player 2":
+        if p.id == "Player 2":  # muss schauen das die meisten variablen P2 enden
 
             roteshartesding = pygame.transform.rotate(rotes_hartes_ding, barrelrotation)
             keys = pygame.key.get_pressed()
@@ -450,18 +450,18 @@ def main():
                 #print('Staerke: '+ bullet_staerke)
 
             if keys[pygame.K_s]: #flugdauer -
-                bullet_kurz()
+                bullet_kurzP2()
                 #print('Staerke: '+ bullet_staerke)
 
             if keys[pygame.K_q]:
-                bullet_grad_plus()
+                bullet_grad_plusP2()
                 #print('Winkel: '+ bullet_winkel)
 
             if keys[pygame.K_a]:
-                bullet_grad_minus()
+                bullet_grad_minusP2()
                 #print('Winkel: '+bullet_winkel)
             if keys[pygame.K_r]:
-                reset_bullet_trajectory()
+                reset_bullet_trajectoryP2()
                 barrelrotation = 230
 
 
@@ -470,7 +470,7 @@ def main():
                # print('Hello i am under the water')
 
 
-                fire_bullet(p2.x , p2.y )
+                fire_bulletP2(p2.x , p2.y )
                 distanz = 0
 
 
