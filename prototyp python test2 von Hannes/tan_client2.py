@@ -108,7 +108,27 @@ def fire_bullet(x,y):
    # while y < 501 :
     win.blit(runde_kugel,(x+90  , y+55) )
 
+def fire_bulletP2(x,y):
+    global bullet_state
+    global g
+    global v0
+    global theta
+    global r
+    global v
+    global m
+    global pos
+    global time
+    global dtime
+
+    bullet_state = True
+   # while y < 501 :
+    win.blit(runde_kugel,(x+90  , y+55) ) # muss geändert werden
 def stop_bullet():
+    global bullet_state
+    bullet_state = False
+    #print("aufhören")
+
+def stop_bulletP2():
     global bullet_state
     bullet_state = False
     #print("aufhören")
@@ -117,16 +137,41 @@ def bullet_weite():
     global bullet_staerke
     bullet_staerke = bullet_staerke + 2
 
+
+
     sxs = 250
     if bullet_staerke > sxs:
         bullet_staerke = bullet_staerke - 2
+
+def bullet_weiteP2():
+    global bullet_staerke
+    bullet_staerke = bullet_staerke + 2
+    sxs = 250
+    if bullet_staerke > sxs:
+        bullet_staerke = bullet_staerke - 2
+
 def bullet_kurz():
     global bullet_staerke
     bullet_staerke = bullet_staerke - 2
 
+    sxs = 250
+    if bullet_staerke > sxs:
+        bullet_staerke = bullet_staerke - 2
+
     if bullet_staerke < 5:
         bullet_staerke = bullet_staerke + 2
 
+
+def bullet_kurzP2():
+    global bullet_staerke
+    bullet_staerke = bullet_staerke - 2
+
+    sxs = 250
+    if bullet_staerke > sxs:
+        bullet_staerke = bullet_staerke - 2
+
+    if bullet_staerke < 5:
+        bullet_staerke = bullet_staerke + 2
 def bullet_grad_plus():
     global bullet_winkel
     global fakx
@@ -142,8 +187,36 @@ def bullet_grad_plus():
             faky = 5
         else:
             fakx = fakx + 3
+def bullet_grad_plusP2():
+    global bullet_winkel
+    global fakx
+    global faky
+    bullet_winkel = bullet_winkel + 3
 
+    if bullet_winkel < 18 and faky <= 18:
+        faky = faky + 3
+        if fakx > 2:
+            fakx = fakx - 3
+        elif fakx > 18:
+            fakx = 5
+            faky = 5
+        else:
+            fakx = fakx + 3
 def bullet_grad_minus():
+    global bullet_winkel
+    global fakx
+    global faky
+    bullet_winkel = bullet_winkel - 3
+    if bullet_winkel > 0 and fakx <= 18:
+        fakx = fakx + 3
+        if faky > -1:
+            faky = faky - 3
+        elif fakx >18:
+            fakx = 5
+            faky = 5
+        else:
+            faky = faky + 3
+def bullet_grad_minusP2():
     global bullet_winkel
     global fakx
     global faky
@@ -159,8 +232,15 @@ def bullet_grad_minus():
             faky = faky + 3
 
 
-
 def reset_bullet_trajectory():
+    global fakx
+    global faky
+    global bullet_winkel
+    fakx = 5
+    faky = 5
+    bullet_winkel =0
+
+def reset_bullet_trajectoryP2():
     global fakx
     global faky
     global bullet_winkel
@@ -352,6 +432,8 @@ def main():
             variY = 0
             # faky = 0  # faktoren der fariabelnen für x und y
             # fakx = 0
+            win.blit(roteshartesding, (p.x +35 - int(roteshartesding.get_width() / 2), p.y + 90 + 116 - int(roteshartesding.get_height() / 2)))
+            win.blit(blaueshartesding,(p2.x+ 20 , p2.y +120))
 
             if keys[pygame.K_UP] and barrelrotation > 120:
                 barrelrotation = barrelrotation - 5
@@ -359,12 +441,12 @@ def main():
             if keys[pygame.K_DOWN] and barrelrotation <= 180:
                 barrelrotation = barrelrotation + 5
 
-            win.blit(blaues_hartes_ding,(p2.x+ 20 , p2.y +120))
+            win.blit(blaueshartesding,(p2.x+ 20 , p2.y +120))
             win.blit(roteshartesding, (p.x +35 - int(roteshartesding.get_width() / 2), p.y + 90 + 116 - int(roteshartesding.get_height() / 2)))
             #print(barrelrotation)
 
             if keys[pygame.K_w]:  #flugdauer + bzw vershiebt den hochpunkt
-                bullet_weite()
+                bullet_weiteP2()
                 #print('Staerke: '+ bullet_staerke)
 
             if keys[pygame.K_s]: #flugdauer -
