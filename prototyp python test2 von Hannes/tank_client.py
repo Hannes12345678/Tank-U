@@ -10,6 +10,7 @@ from math import sin
 #ijijijij
 #gegege
 #hahahaha
+#jjj
 n = Network()
 p = n.getP()
 t = n.getP()
