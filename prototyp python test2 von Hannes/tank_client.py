@@ -226,7 +226,7 @@ def main():
 
 
         if p.id == "Player 1":
-            win.blit(roter_panzer, (p2.x, p2.y))
+            win.blit(roter_panzer, (p2.x + 50, p2.y))
             win.blit(blauer_panzer, (p.x, p.y))
 
         if p.id == "Player 2":
@@ -260,7 +260,7 @@ def main():
 
             win.blit(blaueshartesding, (p.x + 85- int(blaueshartesding.get_width() / 2), p.y + 75  - int(blaueshartesding.get_height() / 2)))
 
-            win.blit(rotes_hartes_ding_turned, (p2.x + 15, p2.y + 75 ))
+            win.blit(rotes_hartes_ding_turned, (p2.x + 65, p2.y + 75 ))
             #print(barrelrotation)
 #hier shooting mech p1
             if keys[pygame.K_w]:  #flugdauer + bzw vershiebt den hochpunkt
@@ -406,7 +406,7 @@ def main():
 
             if bullet_state is True:
 
-                bulletx = p.x #-50
+                bulletx = p.x -50
                 bullety = p.y
                 bullet_shoot = True
 
@@ -424,20 +424,26 @@ def main():
                         if distanz < (bullet_staerke):
                             variY = variY - (faky)
                             fire_bullet(bulletx - variX, bullety + variY)
-                            print('p2.x : '+p2.x)
-                            print('bulletx - variX + 20 : '+bulletx - variX + 20)
-                            print('bulletx - variX - 20 : '+bulletx - variX - 20)
-                            print('bullety + variY - 20 : '+bullety + variY - 20)
-                            print('bullety + variY + 20 : '+bullety + variY + 20)
-                            print('p2.y : '+p2.y)
-                            if (bulletx - variX + 20) <= (p2.x) and (bulletx - variX - 20) >= (p2.x): # muss vllt raus
+                            print('p2.x : ')
+                            print(p2.x)
+                            print('bulletx - variX + 20 : ')
+                            print(bulletx - variX + 20)
+                            print('bulletx - variX - 20 : ')
+                            print(bulletx - variX - 20)
+                            print('bullety + variY - 20 : ')
+                            print(bullety + variY - 20)
+                            print('bullety + variY + 20 : ')
+                            print(bullety + variY + 20)
+                            print('p2.y : ')
+                            print(p2.y)
+                            if (bulletx - variX + 20) >= (p2.x) and (bulletx - variX - 20) <= (p2.x): # muss vllt raus
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                                     print('hit')
                         elif distanz > (bullet_staerke):  # and distanz != (bullet_staerke*4)
                             variY = variY + (faky)  # war mal 5
                             fire_bullet(bulletx - variX, bullety + variY)
 
-                            if (bulletx + variX + 20) <= (p2.x) and (bulletx + variX - 20) >= (p2.x):
+                            if (bulletx - variX + 20) >= (p2.x) and (bulletx - variX - 20) <= (p2.x):
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                                     print('hit')
                         elif distanz == bullet_staerke:
@@ -445,8 +451,8 @@ def main():
                             bullet_shoot = False
                             stop_bullet()
                             break
-                    if (bulletx + variX + 20) <= (p2.x) and (bulletx + variX - 20) >= (p2.x):
-                        if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
+                    if (bulletx - variX + 100) >= (p2.x) and (bulletx - variX - 100) <= (p2.x):
+                        if (bullety + variY - 100) <= (p2.y) and (bullety + variY + 100) >= (p2.y):
                             print('hit')
 
                     fire_bullet(bulletx + variX, bullety + variY)
