@@ -14,8 +14,8 @@ n = Network()
 p = n.getP()
 t = n.getP()
 #bullet variablen (können später gemacht werden )
-bullety = p.y
-bulletx = p.x
+#bullety = p.y
+#bulletx = p.x
 bullet_staerke = 15 # hier immer ungerade
 bullet_winkel = 0 # davor 10
 
@@ -332,16 +332,101 @@ def main():
 
 
 
-
+#heh
 
 
 
 
 
             """ bullet_group.add(Bullegame.create_bullet(p.x, p.y)) """
+        if p.id == "Player 2":
+            blaueshartesding = pygame.transform.rotate(rotes_hartes_ding, barrelrotation)
+            keys = pygame.key.get_pressed()
+            barrelrotation = 300
 
+            variX = 0  # wie stark das zeug ist bzw winkel
+            variY = 0
+            # faky = 0  # faktoren der fariabelnen für x und y
+            # fakx = 0
 
+            if keys[pygame.K_UP] and barrelrotation <= 350:
+                barrelrotation = barrelrotation + 5
+                bullet_grad_plus()
 
+            if keys[pygame.K_DOWN] and barrelrotation >= 290:
+                barrelrotation = barrelrotation - 5
+                bullet_grad_minus()
+#d
+            win.blit(blaueshartesding, (
+            p.x + 30 - int(blaueshartesding.get_width() / 2), p.y + 75 - int(blaueshartesding.get_height() / 2)))
+
+            win.blit(blaues_hartes_ding, (p2.x + 0, p2.y + 70))
+            # print(barrelrotation)
+            # hier shooting mech p1
+            if keys[pygame.K_w]:  # flugdauer + bzw vershiebt den hochpunkt
+                bullet_weite()
+                # print('Staerke: '+ bullet_staerke)
+
+            if keys[pygame.K_s]:  # flugdauer -
+                bullet_kurz()
+                # print('Staerke: '+ bullet_staerke)
+
+            if keys[pygame.K_q]:
+                bullet_grad_plus()
+                # print('Winkel: '+ bullet_winkel)
+
+            if keys[pygame.K_a]:
+                bullet_grad_minus()
+                # print('Winkel: '+bullet_winkel)
+            if keys[pygame.K_r]:
+                reset_bullet_trajectory()
+                barrelrotation = 230
+
+            if keys[pygame.K_SPACE]:
+                # print('Hello i am under the water')
+
+                fire_bullet(p.x, p.y)
+                distanz = 0
+            # hhhhurfrujfu
+
+            if bullet_state is True:
+
+                bulletx = p.x
+                bullety = p.y
+                bullet_shoot = True
+
+                while bullet_shoot:  # while variX < 900 V1.0 schuss geht gerade aus
+                    # hier for loop
+                    # distanz =0
+
+                    for x in range(bullet_staerke * 2):
+
+                        variX = variX + (fakx)
+
+                        distanz = distanz + 2
+
+                        # if  else für ab hälfte das andere
+                        if distanz < (bullet_staerke):
+                            variY = variY - (faky)
+                            fire_bullet(bulletx + variX, bullety + variY)
+                        elif distanz > (bullet_staerke):  # and distanz != (bullet_staerke*4)
+                            variY = variY + (faky)  # war mal 5
+                            fire_bullet(bulletx + variX, bullety + variY)
+                        elif distanz == bullet_staerke:
+
+                            bullet_shoot = False
+                            stop_bullet()
+                            break
+
+                    fire_bullet(bulletx + variX, bullety + variY)
+                    if variX > 400:
+                        bullet_shoot = False
+                        stop_bullet()
+
+            """ bullet_group.add(Bullegame.create_bullet(p.x, p.y)) """
+
+        pygame.display.update()
+"""
         if p.id == "Player 2":
 
             roteshartesding = pygame.transform.rotate(rotes_hartes_ding, barrelrotation)
@@ -429,6 +514,7 @@ def main():
                      if variX > 400:
                          bullet_shoot = False
                          stop_bullet()
+"""
 
 
 
@@ -437,7 +523,6 @@ def main():
 
 
 
-        pygame.display.update()
 #main() habe es in kommentar gesetzt damit man bei ui testen kann
 
 
