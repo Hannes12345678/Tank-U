@@ -16,7 +16,6 @@ t = n.getP()
 #bullet variablen (können später gemacht werden )
 bullety = p.y
 bulletx = p.x
-
 bullet_staerke = 15 # hier immer ungerade
 bullet_winkel = 0 # davor 10
 
@@ -311,7 +310,7 @@ def main():
             win.blit(blauer_panzer, (p2.x, p2.y))
 
 
-#ooo
+
 
 
 
@@ -433,69 +432,70 @@ def main():
             variY = 0
             # faky = 0  # faktoren der fariabelnen für x und y
             # fakx = 0
+            win.blit(roteshartesding, (p.x +35 - int(roteshartesding.get_width() / 2), p.y + 90 + 116 - int(roteshartesding.get_height() / 2)))
+            win.blit(blaues_hartes_ding,(p2.x+ 20 , p2.y +120))
 
-            if keys[pygame.K_UP] and barrelrotation <= 240:
-                barrelrotation = barrelrotation + 5
-                bullet_grad_plus()
-
-            if keys[pygame.K_DOWN] and barrelrotation >= 180:
+            if keys[pygame.K_UP] and barrelrotation > 120:
                 barrelrotation = barrelrotation - 5
-                bullet_grad_minus()
 
-            win.blit(roteshartesding, (
-            p2.x + 85 - int(roteshartesding.get_width() / 2), p2.y + 75 - int(roteshartesding.get_height() / 2)))
+            if keys[pygame.K_DOWN] and barrelrotation <= 180:
+                barrelrotation = barrelrotation + 5
 
-            win.blit(blaues_hartes_ding, (p.x + 15, p.y + 75))
-            # print(barrelrotation)
-            # hier shooting mech p1
-            if keys[pygame.K_w]:  # flugdauer + bzw vershiebt den hochpunkt
-                bullet_weite()
-                # print('Staerke: '+ bullet_staerke)
+            win.blit(blaueshartesding,(p2.x+ 20 , p2.y +120))
+            win.blit(roteshartesding, (p.x +35 - int(roteshartesding.get_width() / 2), p.y + 90 + 116 - int(roteshartesding.get_height() / 2)))
+            #print(barrelrotation)
 
-            if keys[pygame.K_s]:  # flugdauer -
-                bullet_kurz()
-                # print('Staerke: '+ bullet_staerke)
+            if keys[pygame.K_w]:  #flugdauer + bzw vershiebt den hochpunkt
+                bullet_weiteP2()
+                #print('Staerke: '+ bullet_staerke)
+
+            if keys[pygame.K_s]: #flugdauer -
+                bullet_kurzP2()
+                #print('Staerke: '+ bullet_staerke)
 
             if keys[pygame.K_q]:
-                bullet_grad_plus()
-                # print('Winkel: '+ bullet_winkel)
+                bullet_grad_plusP2()
+                #print('Winkel: '+ bullet_winkel)
 
             if keys[pygame.K_a]:
-                bullet_grad_minus()
-                # print('Winkel: '+bullet_winkel)
+                bullet_grad_minusP2()
+                #print('Winkel: '+bullet_winkel)
             if keys[pygame.K_r]:
-                reset_bullet_trajectory()
+                reset_bullet_trajectoryP2()
                 barrelrotation = 230
 
-            if keys[pygame.K_SPACE]:
-                # print('Hello i am under the water')
 
-                fire_bullet(p2.x, p2.y)
+
+            if keys[pygame.K_SPACE]:
+               # print('Hello i am under the water')
+
+
+                fire_bulletP2(p2.x , p2.y )
                 distanz = 0
-            # hhhhurfrujfu
+
 
             if bullet_state is True:
 
-                bulletx = p2.x
-                bullety = p2.y
-                bullet_shoot = True
+                 bulletx = p2.x
+                 bullety = p2.y
+                 bullet_shoot = True
 
-                while bullet_shoot:  # while variX < 900 V1.0 schuss geht gerade aus
-                    # hier for loop
-                    # distanz =0
+                 while bullet_shoot:      #while variX < 900 V1.0 schuss geht gerade aus
+                     #hier for loop
+                     #distanz =0
 
-                    for x in range(bullet_staerke * 2):
+                     for x in range(bullet_staerke * 2) :
 
                         variX = variX - (fakx)
 
                         distanz = distanz + 2
 
-                        # if  else für ab hälfte das andere
-                        if distanz < (bullet_staerke):
+                     # if  else für ab hälfte das andere
+                        if distanz < (bullet_staerke  ):
                             variY = variY - (faky)
                             fire_bullet(bulletx + variX, bullety + variY)
-                        elif distanz > (bullet_staerke):  # and distanz != (bullet_staerke*4)
-                            variY = variY + (faky)  # war mal 5
+                        elif distanz > (bullet_staerke  ):# and distanz != (bullet_staerke*4)
+                            variY = variY + (faky) #war mal 5
                             fire_bullet(bulletx + variX, bullety + variY)
                         elif distanz == bullet_staerke:
 
@@ -503,12 +503,23 @@ def main():
                             stop_bullet()
                             break
 
-                    fire_bullet(bulletx + variX, bullety + variY)
-                    if variX > 1000:    # vllt 400
-                        bullet_shoot = False
-                        stop_bullet()
 
-    pygame.display.update()
+
+
+
+                     fire_bullet(bulletx + variX, bullety + variY)
+                     if variX > 400:
+                         bullet_shoot = False
+                         stop_bullet()
+
+
+
+
+
+
+
+
+        pygame.display.update()
 #main() habe es in kommentar gesetzt damit man bei ui testen kann
 
 
