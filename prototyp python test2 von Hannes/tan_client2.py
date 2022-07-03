@@ -311,7 +311,7 @@ def main():
             win.blit(blauer_panzer, (p2.x, p2.y))
 
 
-
+#ooo
 
 
 
