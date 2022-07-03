@@ -168,6 +168,10 @@ def reset_bullet_trajectory():
     faky = 5
     bullet_winkel =0
 
+#def treffer():
+
+
+
 def redrawWindow(win, player, player2):
     win.fill((255, 255, 255))
     win.blit(hinter_grundussus,(0,0))
@@ -308,14 +312,25 @@ def main():
                         if distanz < (bullet_staerke  ):
                             variY = variY - (faky)
                             fire_bullet(bulletx + variX, bullety + variY)
+                            if (bulletx + variX - 20) <= (p2.x) and (bulletx + variX + 20) >= (p2.x):
+                                if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
+                                    print('hit')
                         elif distanz > (bullet_staerke  ):# and distanz != (bullet_staerke*4)
                             variY = variY + (faky) #war mal 5
                             fire_bullet(bulletx + variX, bullety + variY)
+                            if (bulletx + variX - 20) <= (p2.x) and (bulletx + variX + 20) >= (p2.x):
+                                if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
+                                    print('hit')
                         elif distanz == bullet_staerke:
 
                             bullet_shoot = False
                             stop_bullet()
                             break
+                     if (bulletx + variX-20) <= (p2.x) and (bulletx + variX + 20) >= (p2.x):
+                        if (bullety + variY-20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
+                            print('hit')
+
+
 
 
 
@@ -409,14 +424,23 @@ def main():
                         if distanz < (bullet_staerke):
                             variY = variY - (faky)
                             fire_bullet(bulletx - variX, bullety + variY)
+                            if (bulletx + variX + 20) <= (p2.x) and (bulletx + variX - 20) >= (p2.x): # muss vllt raus
+                                if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
+                                    print('hit')
                         elif distanz > (bullet_staerke):  # and distanz != (bullet_staerke*4)
                             variY = variY + (faky)  # war mal 5
                             fire_bullet(bulletx - variX, bullety + variY)
+                            if (bulletx + variX + 20) <= (p2.x) and (bulletx + variX - 20) >= (p2.x):
+                                if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
+                                    print('hit')
                         elif distanz == bullet_staerke:
 
                             bullet_shoot = False
                             stop_bullet()
                             break
+                    if (bulletx + variX + 20) <= (p2.x) and (bulletx + variX - 20) >= (p2.x):
+                        if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
+                            print('hit')
 
                     fire_bullet(bulletx + variX, bullety + variY)
                     if variX > 900:
