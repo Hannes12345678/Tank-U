@@ -424,12 +424,19 @@ def main():
                         if distanz < (bullet_staerke):
                             variY = variY - (faky)
                             fire_bullet(bulletx - variX, bullety + variY)
+                            print('p2.x : '+p2.x)
+                            print('bulletx - variX + 20 : '+bulletx - variX + 20)
+                            print('bulletx - variX - 20 : '+bulletx - variX - 20)
+                            print('bullety + variY - 20 : '+bullety + variY - 20)
+                            print('bullety + variY + 20 : '+bullety + variY + 20)
+                            print('p2.y : '+p2.y)
                             if (bulletx - variX + 20) <= (p2.x) and (bulletx - variX - 20) >= (p2.x): # muss vllt raus
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                                     print('hit')
                         elif distanz > (bullet_staerke):  # and distanz != (bullet_staerke*4)
                             variY = variY + (faky)  # war mal 5
                             fire_bullet(bulletx - variX, bullety + variY)
+
                             if (bulletx + variX + 20) <= (p2.x) and (bulletx + variX - 20) >= (p2.x):
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                                     print('hit')
