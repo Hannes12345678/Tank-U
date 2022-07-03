@@ -406,7 +406,7 @@ def main():
 
             if bullet_state is True:
 
-                bulletx = p.x -50
+                bulletx = p.x #-50
                 bullety = p.y
                 bullet_shoot = True
 
@@ -424,7 +424,7 @@ def main():
                         if distanz < (bullet_staerke):
                             variY = variY - (faky)
                             fire_bullet(bulletx - variX, bullety + variY)
-                            if (bulletx + variX + 20) <= (p2.x) and (bulletx + variX - 20) >= (p2.x): # muss vllt raus
+                            if (bulletx - variX + 20) <= (p2.x) and (bulletx - variX - 20) >= (p2.x): # muss vllt raus
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                                     print('hit')
                         elif distanz > (bullet_staerke):  # and distanz != (bullet_staerke*4)
