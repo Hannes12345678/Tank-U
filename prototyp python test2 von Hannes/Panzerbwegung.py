@@ -4,7 +4,7 @@ import pygame
 #ddd
 
 class Player():   #alles hier wird an den server gesendet
-    def __init__(self, x, y, height, width, color, id):
+    def __init__(self, x, y, height, width, color, id, health, hp):
         self.x = x
         self.y = y
         self.width = width
@@ -14,6 +14,8 @@ class Player():   #alles hier wird an den server gesendet
         self.rect = (x, y, width, height)
         self.vel = 5
         self.vel2 = 0.5
+        self.health = health
+        self.hp = hp
 
     def draw(self, win):
         pygame.draw.rect(win, self.color, self.rect)

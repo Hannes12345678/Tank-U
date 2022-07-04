@@ -249,6 +249,8 @@ def main():
             variY = 0
             #faky = 0  # faktoren der fariabelnen für x und y
             #fakx = 0
+            health_points = p2.hp
+
 
 
             if keys[pygame.K_UP] and barrelrotation <= 240:
@@ -298,6 +300,7 @@ def main():
                  bulletx = p.x
                  bullety = p.y
                  bullet_shoot = True
+
 
                  while bullet_shoot:      #while variX < 900 V1.0 schuss geht gerade aus
                      #hier for loop
