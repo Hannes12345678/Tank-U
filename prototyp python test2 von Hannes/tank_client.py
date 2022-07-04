@@ -143,7 +143,7 @@ def bullet_grad_plus():
             faky = 5
         else:
             fakx = fakx + 3
-
+#hhh
 def bullet_grad_minus():
     global bullet_winkel
     global fakx
