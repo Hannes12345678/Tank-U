@@ -211,14 +211,20 @@ def main():
     t = n.getP()"""
     clock = pygame.time.Clock()
     p2 = n.send(p)
-    p.run = True
-    p2.run = False
+
     health_points = p2.hp
+    current_time = 0
+    go1 = True
+    go2 = False
+    zeit = 0
+    zeitb = 60
+
 
     barrelrotation = 230
     while run:
         clock.tick(20)  #30 fps kamen von Konrad und Hannes deshalb ok wenn die Idee von Willi käme dann hätten wäre es fatal und falsch
         p2 = n.send(p)
+        zeit = zeit + 1
 
 
 
@@ -228,6 +234,16 @@ def main():
                 pygame.quit()
 
         p.tank_move()
+        if zeit == zeitb:   #runden logic
+            go1 = False
+            go2 = True
+        elif zeit == zeitb * 2:
+            go1 = True
+            go2 = False
+            zeit = 0
+
+
+
 
 #l
         #print(p)
@@ -259,7 +275,7 @@ def main():
 
 
 
-        if p.id == "Player 1" :
+        if p.id == "Player 1" and go1 :
             blaueshartesding = pygame.transform.rotate(blaues_hartes_ding_turned, barrelrotation)
             keys = pygame.key.get_pressed()
             barrelrotation = 230
@@ -412,7 +428,7 @@ def main():
 
 
             """ bullet_group.add(Bullegame.create_bullet(p.x, p.y)) """
-        if p.id == "Player 2" :
+        if p.id == "Player 2" and go2:
             blaueshartesding = pygame.transform.rotate(rotes_hartes_ding_turned, barrelrotation)
             keys = pygame.key.get_pressed()
             barrelrotation = 300
