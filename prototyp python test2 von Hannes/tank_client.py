@@ -229,7 +229,7 @@ def main():
 
         p.tank_move()
 
-
+#l
         #print(p)
         #print(p2)
         #print(p.x)
