@@ -259,7 +259,7 @@ def main():
 
 
 
-        if p.id == "Player 1" :
+        if p.id == "Player 1" and p.run:
             blaueshartesding = pygame.transform.rotate(blaues_hartes_ding_turned, barrelrotation)
             keys = pygame.key.get_pressed()
             barrelrotation = 230
@@ -271,7 +271,11 @@ def main():
             #fakx = 0
 
             print(p2.x)
+            if p.x >= 900:
+                print('Super win')
 
+            if p2.x >= 900 or (p.x + 750) < p2.x:
+                print('you suck')
 
 
             if keys[pygame.K_UP] and barrelrotation <= 240:
@@ -374,7 +378,7 @@ def main():
                         print('Super win')
 
 
-                     if p2.x >= 900:
+                     if p2.x >= 900 or (p.x+750) < p2.x :
                          print('you suck')
 
 
@@ -412,6 +416,11 @@ def main():
             variY = 0
             # faky = 0  # faktoren der fariabelnen für x und y
             # fakx = 0
+            if p.x >= 900:
+                print('Super win')
+
+            if p2.x >= 900 or p2.x > p.x:
+                print('you suck')
 
             if keys[pygame.K_UP] and barrelrotation <= 390:
                 barrelrotation = barrelrotation - 5
@@ -517,7 +526,7 @@ def main():
                     if p.x >= 900:
                         print('Super win')
 
-                    if p2.x >= 900:
+                    if p2.x >= 900 or p2.x > p.x:
                         print('you suck')
 
 
