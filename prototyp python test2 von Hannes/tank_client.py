@@ -232,14 +232,14 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-
+#
         p.tank_move()
         if zeit == zeitb:   #runden logic
             go1 = False
-            go2 = True
+            go2 = True # ll
         elif zeit == zeitb * 2:
             go1 = True
-            go2 = False
+            go2 = False ##l,l,l,
             zeit = 0
 
 
