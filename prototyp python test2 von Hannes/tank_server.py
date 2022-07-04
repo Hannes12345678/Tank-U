@@ -21,7 +21,7 @@ print("Waiting for a connection, Server Started")
 
 #dd
 
-players = [Player(100,316,0,0,(255,0,0), "Player 1", "Alive", 20), Player(600, 320, 0,0,(0,0,255), "Player 2","Alive", 20)]
+players = [Player(100,316,0,0,(255,0,0), "Player 1", 20, True), Player(600, 320, 0,0,(0,0,255), "Player 2", 20, False)]
 
 
 

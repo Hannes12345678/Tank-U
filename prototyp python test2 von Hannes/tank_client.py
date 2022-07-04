@@ -14,6 +14,7 @@ from math import sin
 n = Network()
 p = n.getP()
 t = n.getP()
+p2 = n.send(p)
 #bullet variablen (können später gemacht werden )
 #bullety = p.y
 #bulletx = p.x
@@ -170,6 +171,21 @@ def reset_bullet_trajectory():
     bullet_winkel =0
 
 #def treffer():
+def health_registration(a ):
+    global p2
+    global p
+
+    if a <= 0:
+        print("win")
+        p.x = p.x +1000
+        #print p.x muss noch unten rein
+
+
+
+
+
+
+
 
 
 
@@ -194,6 +210,10 @@ def main():
     p = n.getP()  #ist jetzt oben drinn muss was überprüfen 
     t = n.getP()"""
     clock = pygame.time.Clock()
+    p2 = n.send(p)
+    p.run = True
+    p2.run = False
+    health_points = p2.hp
 
     barrelrotation = 230
     while run:
@@ -239,7 +259,7 @@ def main():
 
 
 
-        if p.id == "Player 1":
+        if p.id == "Player 1" :
             blaueshartesding = pygame.transform.rotate(blaues_hartes_ding_turned, barrelrotation)
             keys = pygame.key.get_pressed()
             barrelrotation = 230
@@ -249,7 +269,8 @@ def main():
             variY = 0
             #faky = 0  # faktoren der fariabelnen für x und y
             #fakx = 0
-            health_points = p2.hp
+
+            print(p2.x)
 
 
 
@@ -284,7 +305,7 @@ def main():
             if keys[pygame.K_r]:
                 reset_bullet_trajectory()
                 barrelrotation = 230
-
+            #if statement für px (muss noch bei p2 rein)
 
 
             if keys[pygame.K_SPACE]:
@@ -319,12 +340,23 @@ def main():
                             if (bulletx + variX - 20) <= (p2.x) and (bulletx + variX + 20) >= (p2.x):
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                                     print('hit')
+                                    health_points = health_points - 5
+                                    print(health_points)
+                                    health_registration(health_points)
+
+
                         elif distanz > (bullet_staerke  ):# and distanz != (bullet_staerke*4)
                             variY = variY + (faky) #war mal 5
                             fire_bullet(bulletx + variX, bullety + variY)
                             if (bulletx + variX - 20) <= (p2.x) and (bulletx + variX + 20) >= (p2.x):
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                                     print('hit')
+                                    health_points = health_points - 2
+                                    print(health_points)
+                                    health_registration(health_points)
+
+
+
                         elif distanz == bullet_staerke:
 
                             bullet_shoot = False
@@ -333,6 +365,18 @@ def main():
                      if (bulletx + variX-20) <= (p2.x) and (bulletx + variX + 20) >= (p2.x):
                         if (bullety + variY-20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                             print('hit')
+                            health_points = health_points - 2
+                            print(health_points)
+                            health_registration(health_points)
+
+
+                     if p.x >= 900:
+                        print('Super win')
+
+
+                     if p2.x >= 900:
+                         print('you suck')
+
 
 
 
@@ -358,10 +402,11 @@ def main():
 
 
             """ bullet_group.add(Bullegame.create_bullet(p.x, p.y)) """
-        if p.id == "Player 2":
+        if p.id == "Player 2" :
             blaueshartesding = pygame.transform.rotate(rotes_hartes_ding_turned, barrelrotation)
             keys = pygame.key.get_pressed()
             barrelrotation = 300
+
 
             variX = 0  # wie stark das zeug ist bzw winkel
             variY = 0
@@ -428,21 +473,24 @@ def main():
                         if distanz < (bullet_staerke):
                             variY = variY - (faky)
                             fire_bullet(bulletx - variX, bullety + variY)
-                            print('p2.x : ')
-                            print(p2.x)
-                            print('bulletx - variX + 20 : ')
-                            print(bulletx - variX + 20)
-                            print('bulletx - variX - 20 : ')
-                            print(bulletx - variX - 20)
-                            print('bullety + variY - 20 : ')
-                            print(bullety + variY - 20)
-                            print('bullety + variY + 20 : ')
-                            print(bullety + variY + 20)
-                            print('p2.y : ')
-                            print(p2.y)
+                            #print('p2.x : ')
+                            #print(p2.x)
+                            #print('bulletx - variX + 20 : ')
+                            #print(bulletx - variX + 20)
+                            #print('bulletx - variX - 20 : ')
+                            #print(bulletx - variX - 20)
+                            #print('bullety + variY - 20 : ')
+                            #print(bullety + variY - 20)
+                            #print('bullety + variY + 20 : ')
+                            #print(bullety + variY + 20)
+                            #print('p2.y : ')
+                            #print(p2.y)
                             if (bulletx - variX + 20) >= (p2.x) and (bulletx - variX - 20) <= (p2.x): # muss vllt raus
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                                     print('hit')
+                                    health_points = health_points - 2
+                                    print(health_points)
+                                    health_registration(health_points)
                         elif distanz > (bullet_staerke):  # and distanz != (bullet_staerke*4)
                             variY = variY + (faky)  # war mal 5
                             fire_bullet(bulletx - variX, bullety + variY)
@@ -450,6 +498,10 @@ def main():
                             if (bulletx - variX + 20) >= (p2.x) and (bulletx - variX - 20) <= (p2.x):
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                                     print('hit')
+                                    health_points = health_points - 2
+                                    print(health_points)
+                                    health_registration(health_points)
+
                         elif distanz == bullet_staerke:
 
                             bullet_shoot = False
@@ -458,6 +510,18 @@ def main():
                     if (bulletx - variX + 100) >= (p2.x) and (bulletx - variX - 100) <= (p2.x):
                         if (bullety + variY - 100) <= (p2.y) and (bullety + variY + 100) >= (p2.y):
                             print('hit')
+                            health_points = health_points - 2
+                            print(health_points)
+                            health_registration(health_points)
+
+                    if p.x >= 900:
+                        print('Super win')
+
+                    if p2.x >= 900:
+                        print('you suck')
+
+
+
 
                     fire_bullet(bulletx + variX, bullety + variY)
                     if variX > 900:
