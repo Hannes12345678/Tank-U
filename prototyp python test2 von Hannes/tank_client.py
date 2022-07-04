@@ -259,7 +259,7 @@ def main():
 
 
 
-        if p.id == "Player 1" and p.run:
+        if p.id == "Player 1" :
             blaueshartesding = pygame.transform.rotate(blaues_hartes_ding_turned, barrelrotation)
             keys = pygame.key.get_pressed()
             barrelrotation = 230
@@ -374,12 +374,17 @@ def main():
                             health_registration(health_points)
 
 
+
                      if p.x >= 900:
                         print('Super win')
 
 
                      if p2.x >= 900 or (p.x+750) < p2.x :
+
                          print('you suck')
+
+
+
 
 
 
@@ -392,6 +397,7 @@ def main():
                      if variX > 400:
                          bullet_shoot = False
                          stop_bullet()
+
 
 
 
@@ -528,6 +534,7 @@ def main():
 
                     if p2.x >= 900 or p2.x > p.x:
                         print('you suck')
+
 
 
 
