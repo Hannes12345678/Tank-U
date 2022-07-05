@@ -5,12 +5,12 @@ import pickle
 import pygame
 
 
-
-server = "134.103.111.15"
+#ip
+server = "192.168.2.108" #192.168.2.108
 port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#hehehe
+
 try:
     s.bind((server, port))
 except socket.error as e:
@@ -19,7 +19,7 @@ except socket.error as e:
 s.listen(2)
 print("Waiting for a connection, Server Started")
 
-#dd
+#was in den playern drin ist
 
 players = [Player(100,316,0,0,(255,0,0), "Player 1", 1000, True), Player(600, 320, 0,0,(0,0,255), "Player 2", 1000, False)]
 

@@ -53,6 +53,9 @@ dtime = 0.01 #maybe was anderes
 width = 1001
 height = 501
 win = pygame.display.set_mode((width, height))
+
+#Großteil der Grafiken also Pixelart
+
 pygame.display.set_caption("Client")
 blauer_panzer = pygame.image.load("Blue-Tank-V1.png")
 roter_panzer =pygame.image.load("red-tank-v1-benutzen.png")
@@ -63,6 +66,8 @@ blaues_hartes_ding_turned = pygame.image.load("Blue-Kanone-turned.png")
 rotes_hartes_ding_turned = pygame.image.load("red-Kanone-turned.png")
 runde_kugel = pygame.image.load('bullet.png')
 hinter_grundussus = pygame.image.load('hintergrund.png')
+winner = pygame.image.load('uwin.png')
+loser = pygame.image.load('ulose.png')
 
 
 
@@ -394,11 +399,13 @@ def main():
 
                      if p.x >= 900:
                         print('Super win')
+                        win.blit(winner,(0,0))
 
 
                      if p2.x >= 900 or (p.x+750) < p2.x :
 
-                         print('you suck')
+                         print('you lose')
+                         win.blit(loser,(0,0))
 
 
 
@@ -548,9 +555,11 @@ def main():
 
                     if p.x >= 900:
                         print('Super win')
+                        win.blit(winner, (0, 0))
 
                     if p2.x >= 900 or p2.x > p.x:
                         print('you suck')
+                        win.blit(loser, (0, 0))
 
 
 
