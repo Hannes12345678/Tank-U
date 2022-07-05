@@ -245,7 +245,7 @@ def main():
             win.blit(winner, (0, 0))
 
         gewinner = win.blit(winner,(0,0))
-
+#k
 
 
         for event in pygame.event.get():
