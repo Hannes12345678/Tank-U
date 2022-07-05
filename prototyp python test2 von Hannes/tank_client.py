@@ -24,6 +24,7 @@ fakx = 5
 
 bullet_state = False
 bullet_shoot = False
+"""
 
 g = [0, -9.8, 0]
 v0 = 10
@@ -34,7 +35,7 @@ m = 1
 pos = m * v
 time = 0
 dtime = 0.01 #maybe was anderes
-
+"""
 
 
 
@@ -241,7 +242,7 @@ def main():
         if winning:
             win.blit(winner, (0, 0))
 
-        gewinner = win.blit(winner,(0,0))
+
 #k
 
 
@@ -425,7 +426,7 @@ def main():
                      if p2.x >= 900 or (p.x+750) < p2.x :
 
                          print('you lose')
-                         win.blit(loser,(0,0))
+
                          lose = True
 
 
@@ -468,6 +469,13 @@ def main():
             variY = 0
             # faky = 0  # faktoren der fariabelnen für x und y
             # fakx = 0
+
+            if lose:
+                win.blit(loser, (0, 0))
+
+            if winning:
+                win.blit(winner,(0,0))
+
             if p.x >= 900:
                 print('Super win')
                 winning = True
@@ -475,12 +483,6 @@ def main():
             if p2.x >= 900 or p2.x > p.x:
                 print('you lose')
                 lose = True
-
-            if lose:
-                win.blit(loser, (0, 0))
-
-            if winning:
-                gewinner()
 
             if keys[pygame.K_UP] and barrelrotation <= 390:
                 barrelrotation = barrelrotation - 5
