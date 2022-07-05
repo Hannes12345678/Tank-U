@@ -7,10 +7,7 @@ import pygame.math
 from math import pi
 from math import cos
 from math import sin
-#ijijijij
-#gegege
-#hahahaha
-#jjj
+
 n = Network()
 p = n.getP()
 t = n.getP()
