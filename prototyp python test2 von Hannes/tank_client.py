@@ -357,7 +357,8 @@ def main():
                         if distanz < (bullet_staerke  ):
                             variY = variY - (faky)
                             fire_bullet(bulletx + variX, bullety + variY)
-                            if (bulletx + variX - 20) <= (p2.x) and (bulletx + variX + 20) >= (p2.x):
+                            if (bulletx + variX - 20) <= (p2.x) and (bulletx + variX + 20) >= (p2.x):  # das ganze ding ist die hitboxlogic
+
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
                                     print('hit')
                                     health_points = health_points - 5
