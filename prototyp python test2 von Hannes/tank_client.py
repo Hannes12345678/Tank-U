@@ -210,9 +210,11 @@ def redrawWindow(win, player, player2):
 
 #ddd
 def main():
-    global winner
-    global loser
+    #global winner
+    #global loser
     run = True
+    winner = pygame.image.load('uwin.png')
+    loser = pygame.image.load('ulose.png')
     """n = Network()
     p = n.getP()  #ist jetzt oben drinn muss was überprüfen 
     t = n.getP()"""
@@ -472,7 +474,7 @@ def main():
                 winning = True
 
             if p2.x >= 900 or p2.x > p.x:
-                print('you suck')
+                print('you lose')
                 lose = True
 
             if lose:
