@@ -252,7 +252,7 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-#
+#heheh
         p.tank_move()
         if zeit == zeitb:   #runden logic
             go1 = False
