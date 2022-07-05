@@ -210,6 +210,8 @@ def redrawWindow(win, player, player2):
 
 #ddd
 def main():
+    global winner
+    global loser
     run = True
     """n = Network()
     p = n.getP()  #ist jetzt oben drinn muss was überprüfen 
@@ -217,12 +219,15 @@ def main():
     clock = pygame.time.Clock()
     p2 = n.send(p)
 
+
     health_points = p2.hp
     current_time = 0
     go1 = True
     go2 = False
     zeit = 0
     zeitb = 60
+    lose = False
+    winning = False
 
 
     barrelrotation = 230
@@ -230,6 +235,12 @@ def main():
         clock.tick(20)  #30 fps kamen von Konrad und Hannes deshalb ok wenn die Idee von Willi käme dann hätten wäre es fatal und falsch
         p2 = n.send(p)
         zeit = zeit + 1
+
+        if lose:
+            win.blit(loser, (0, 0))
+
+        if winning:
+            win.blit(winner, (0, 0))
 
 
 
@@ -290,13 +301,21 @@ def main():
             variY = 0
             #faky = 0  # faktoren der fariabelnen für x und y
             #fakx = 0
+            if lose:
+                win.blit(loser, (0, 0))
+
+            if winning:
+                win.blit(winner, (0, 0))
 
             print(p2.x)
             if p.x >= 900:
                 print('Super win')
+                winning = True
 
             if p2.x >= 900 or (p.x + 750) < p2.x:
-                print('you suck')
+                print('you lose')
+                lose = True
+
 
 
             if keys[pygame.K_UP] and barrelrotation <= 240:
@@ -399,13 +418,15 @@ def main():
 
                      if p.x >= 900:
                         print('Super win')
-                        win.blit(winner,(0,0))
+                        winning = True
 
 
                      if p2.x >= 900 or (p.x+750) < p2.x :
 
                          print('you lose')
                          win.blit(loser,(0,0))
+                         lose = True
+
 
 
 
@@ -448,9 +469,17 @@ def main():
             # fakx = 0
             if p.x >= 900:
                 print('Super win')
+                winning = True
 
             if p2.x >= 900 or p2.x > p.x:
                 print('you suck')
+                lose = True
+
+            if lose:
+                win.blit(loser, (0, 0))
+
+            if winning:
+                win.blit(winner, (0, 0))
 
             if keys[pygame.K_UP] and barrelrotation <= 390:
                 barrelrotation = barrelrotation - 5
@@ -526,7 +555,7 @@ def main():
                             #print(p2.y)
                             if (bulletx - variX + 20) >= (p2.x) and (bulletx - variX - 20) <= (p2.x): # muss vllt raus
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
-                                    print('hit')
+                                    #print('hit')
                                     health_points = health_points - 2
                                     print(health_points)
                                     health_registration(health_points)
@@ -536,7 +565,7 @@ def main():
 
                             if (bulletx - variX + 20) >= (p2.x) and (bulletx - variX - 20) <= (p2.x):
                                 if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
-                                    print('hit')
+                                    #print('hit')
                                     health_points = health_points - 2
                                     print(health_points)
                                     health_registration(health_points)
@@ -548,18 +577,18 @@ def main():
                             break
                     if (bulletx - variX + 100) >= (p2.x) and (bulletx - variX - 100) <= (p2.x):
                         if (bullety + variY - 100) <= (p2.y) and (bullety + variY + 100) >= (p2.y):
-                            print('hit')
+                            #print('hit')
                             health_points = health_points - 2
-                            print(health_points)
+                            #print(health_points)
                             health_registration(health_points)
 
                     if p.x >= 900:
                         print('Super win')
-                        win.blit(winner, (0, 0))
+                        winner = True
 
                     if p2.x >= 900 or p2.x > p.x:
-                        print('you suck')
-                        win.blit(loser, (0, 0))
+                        print('you lose')
+                        lose = True
 
 
 
