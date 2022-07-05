@@ -244,6 +244,8 @@ def main():
         if winning:
             win.blit(winner, (0, 0))
 
+        gewinner = win.blit(winner,(0,0))
+
 
 
         for event in pygame.event.get():
@@ -481,7 +483,7 @@ def main():
                 win.blit(loser, (0, 0))
 
             if winning:
-                win.blit(winner, (0, 0))
+                gewinner()
 
             if keys[pygame.K_UP] and barrelrotation <= 390:
                 barrelrotation = barrelrotation - 5
