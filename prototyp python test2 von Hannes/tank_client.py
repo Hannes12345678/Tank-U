@@ -180,7 +180,7 @@ def health_registration(a ):
 
     if a <= 0:
         print("win")
-        p.x = p.x +1000
+        p.x = p.x +10000
         #print p.x muss noch unten rein
 
 
@@ -197,8 +197,8 @@ def redrawWindow(win, player, player2):
 
     my_font = pygame.font.SysFont('Comic Sans MS', 20)
     win.fill((255, 255, 255))
-    win.blit(hinter_grundussus,(0,0))
-    text_surface = my_font.render('[<- = move left/ move right = -> ; Space = Shoot] ', False, (0, 0, 0))
+    win.blit(hinter_grundussus,(0,0))  #hintergrund und ebene
+    text_surface = my_font.render('[<- = move left/ move right = -> ; Space = Shoot] ', False, (0, 0, 0))  # steuerungs erklärung
     text_surface2 = my_font.render('[ Arrow up/down = Shooting angle; W/S = shooting Power] ', False, (0, 0, 0))
 
     screen.blit(text_surface, (10, 450))
@@ -324,11 +324,11 @@ def main():
                 win.blit(winner, (0, 0))
 
             print(p2.x)
-            if p.x >= 900:
+            if p.x >= 2500:
                 print('Super win')
                 winning = True
 
-            if p2.x >= 900 or (p.x + 750) < p2.x:
+            if p2.x >= 2500 or (p.x + 1800) < p2.x:
                 print('you lose')
                 lose = True
 
@@ -374,7 +374,7 @@ def main():
 
                 fire_bullet(p.x , p.y )
                 distanz = 0
-#hhhhurfrujfu
+#schießlogic
 
             if bullet_state is True:
 
@@ -432,12 +432,12 @@ def main():
 
 
 
-                     if p.x >= 900:
+                     if p.x >= 2500:
                         print('Super win')
                         winning = True
 
 
-                     if p2.x >= 900 or (p.x+750) < p2.x :
+                     if p2.x >= 2500 or (p.x+1800) < p2.x :
 
                          print('you lose')
 
@@ -490,11 +490,11 @@ def main():
             if winning:
                 win.blit(winner, (0, 0))
 
-            if p.x >= 900:
+            if p.x >= 2500:
                 print('Super win')
                 winning = True
 
-            if p2.x >= 900 or p2.x > p.x:
+            if p2.x >= 2500 or p2.x > p.x:
                 print('you lose')
                 lose = True
 
@@ -599,11 +599,11 @@ def main():
                             #print(health_points)
                             health_registration(health_points)
 
-                    if p.x >= 900:
+                    if p.x >= 2500:
                         print('Super win')
                         winning = True
 
-                    if p2.x >= 900 or p2.x > p.x:
+                    if p2.x >= 2500 or p2.x > p.x:
                         print('you lose')
                         lose = True
 
