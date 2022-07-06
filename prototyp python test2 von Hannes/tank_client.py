@@ -190,7 +190,7 @@ def health_registration(a ):
 
 
 
-
+#window anzeige
 
 def redrawWindow(win, player, player2):
     pygame.font.init()
