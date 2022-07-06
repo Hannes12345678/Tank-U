@@ -193,9 +193,16 @@ def health_registration(a ):
 
 
 def redrawWindow(win, player, player2):
+    pygame.font.init()
+
+    my_font = pygame.font.SysFont('Comic Sans MS', 20)
     win.fill((255, 255, 255))
     win.blit(hinter_grundussus,(0,0))
+    text_surface = my_font.render('[<- = move left/ move right = -> ; Space = Shoot] ', False, (0, 0, 0))
+    text_surface2 = my_font.render('[ Arrow up/down = Shooting angle; W/S = shooting Power] ', False, (0, 0, 0))
 
+    screen.blit(text_surface, (10, 450))
+    screen.blit(text_surface2, (10,475))
     player.draw(win)
     player2.draw(win)
     bullet_group.draw(win)
@@ -210,6 +217,7 @@ def redrawWindow(win, player, player2):
 def main():
     #global winner
     #global loser
+
     run = True
     winner = pygame.image.load('uwin.png')
     loser = pygame.image.load('ulose.png')
@@ -236,6 +244,10 @@ def main():
         p2 = n.send(p)
         zeit = zeit + 1
 
+
+
+
+
         """if lose:
             win.blit(loser, (0, 0))
 
@@ -259,6 +271,8 @@ def main():
             go1 = True
             go2 = False ##l,l,l,
             zeit = 0
+
+
 
 
 
