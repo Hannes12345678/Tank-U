@@ -11,19 +11,19 @@ class Network:
         self.p = self.connect()
 
 
-    def getP(self):
+    def getP(self): #damit pplayer dinge übertragen werden
         return self.p
 
 
 #connection überprüfung
-    def connect(self):
+    def connect(self): #connction
         try:
             self.client.connect(self.addr)
             return pickle.loads(self.client.recv(8192))
         except:
             pass
 #senden daten
-    def send(self, data):
+    def send(self, data): #pickle von daten
 
         try:
             self.client.send(pickle.dumps(data))

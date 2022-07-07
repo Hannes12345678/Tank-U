@@ -1,7 +1,7 @@
 import pygame
 
 
-class knopf():
+class knopf():   # beherbergt was in einem Knopf sein muss
     def __init__(self, x, y, image, scale):
         width = image.get_width()
         height = image.get_height()
@@ -10,13 +10,13 @@ class knopf():
         self.rect.topleft = (x, y)
         self.clicked = False
 
-    def draw(self, surface):
+    def draw(self, surface):  #hinsetzen des knopfes
         action = False
         #maus position
         pos = pygame.mouse.get_pos()
 
         # maus über den bildern
-        if self.rect.collidepoint(pos):
+        if self.rect.collidepoint(pos): #soll nur einmal geclickt werden und dann nicht mehr
             if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
                 self.clicked = True
 

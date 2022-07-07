@@ -15,7 +15,7 @@ try:
     s.bind((server, port))
 except socket.error as e:
     str(e)
-              #wartet auf zwei verbindungen
+#wartet auf zwei verbindungen
 s.listen(2)
 print("Waiting for a connection, Server Started")
 

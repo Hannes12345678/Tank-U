@@ -4,28 +4,30 @@ from Panzerbwegung import *
 import pygame
 import Knopfklasse
 import pygame.math
-from math import pi
-from math import cos
-from math import sin
+#from math import pi
+#from math import cos
+#from math import sin
 
-n = Network()
-p = n.getP()
+n = Network() #networking geschichte
+p = n.getP() #player relevante dinge
 t = n.getP()
 p2 = n.send(p)
 #bullet variablen (können später gemacht werden )
 #bullety = p.y
 #bulletx = p.x
-bullet_staerke = 15 # hier immer ungerade
-bullet_winkel = 0 # davor 10
+
+# alle variablen mit bullet_... stehen im zusammen hang mit der Flugbahn berechnung
+bullet_staerke = 15 # hier immer ungerade / für hochpunkt berechnung (FLUGBAHN = DREIECK)
+bullet_winkel = 0 # davor 10 / Winkel Einstellung
 
 faky = 5  # faktoren der fariabelnen für x und
 fakx = 5
+bullet_state = False # Bulletlogic variable
+bullet_shoot = False # -/-/-
 
 
-bullet_state = False
-bullet_shoot = False
 """
-
+Das hier war mal für die Flugbahn berechnung gedacht, hat jedoch nicht wirklich funktionier also wurde es anders gelösst 
 g = [0, -9.8, 0]
 v0 = 10
 theta = 30 * pi / 180
@@ -38,19 +40,10 @@ dtime = 0.01 #maybe was anderes
 """
 
 
-
-
-
-
-
-
-#muss wurf distanz berechnen
-
-
-
+#Display Settings
 width = 1001
 height = 501
-win = pygame.display.set_mode((width, height))
+win = pygame.display.set_mode((width, height)) #Gui vorraussetzung
 
 #Großteil der Grafiken also Pixelart
 
@@ -74,15 +67,12 @@ bullet_group = pygame.sprite.Group()
 
 
 #display fester erstellen
-import pygame.math
-#jjjj
 SCREEN_HEIGHT = height
 SCREEN_WIDTH = width
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
 pygame.display.set_caption('TANK-U')
-
-#knopf foto ( hier panzer weil hab knopf noch nicht gemacht)
-
+#Start Menü Grafiken
 start_img = pygame.image.load('Pixelart/startknopf.png')
 exit_img = pygame.image.load('Pixelart/exitknopf.png')
 logo_img = pygame.image.load('Pixelart/Logo-Tank_u-nutzbar-v1.png')
@@ -99,8 +89,9 @@ logo_img = Knopfklasse.knopf(190, 50, logo_img, 1.5 )
 #logic des schießens
 def fire_bullet(x,y):
     global bullet_state
+    """
     global g
-    global v0
+    global v0    hier war die alte logic drin
     global theta
     global r
     global v
@@ -108,31 +99,32 @@ def fire_bullet(x,y):
     global pos
     global time
     global dtime
+    """
 
     bullet_state = True
    # while y < 501 :
-    win.blit(runde_kugel,(x+90  , y+55) )
+    win.blit(runde_kugel,(x+90  , y+55) )  # der ball den man sieht auf dem Bildschirm
 
-def stop_bullet():
+def stop_bullet(): #stopt durch False
     global bullet_state
     bullet_state = False
     #print("aufhören")
 
-def bullet_weite():
+def bullet_weite(): #hochpunkt einstellung +
     global bullet_staerke
     bullet_staerke = bullet_staerke + 2
 
     sxs = 250
     if bullet_staerke > sxs:
         bullet_staerke = bullet_staerke - 2
-def bullet_kurz():
+def bullet_kurz(): # hochpunkt einstellung -
     global bullet_staerke
     bullet_staerke = bullet_staerke - 2
 
     if bullet_staerke < 5:
         bullet_staerke = bullet_staerke + 2
 
-def bullet_grad_plus():
+def bullet_grad_plus(): #winkel einstellunng
     global bullet_winkel
     global fakx
     global faky
@@ -148,7 +140,7 @@ def bullet_grad_plus():
         else:
             fakx = fakx + 3
 #hhh
-def bullet_grad_minus():
+def bullet_grad_minus(): # winkel verkleinern
     global bullet_winkel
     global fakx
     global faky
@@ -165,16 +157,16 @@ def bullet_grad_minus():
 
 
 
-def reset_bullet_trajectory():
+def reset_bullet_trajectory(): # wegen leicht buggie winkel einstellung gibt es einen "reset button"
     global fakx
     global faky
     global bullet_winkel
     fakx = 5
     faky = 5
-    bullet_winkel =0
+    bullet_winkel =0     # alles wird hier auf den anfangs punkt gesetzt
 
 #def treffer():
-def health_registration(a ):
+def health_registration(a ):     # schadens Logic
     global p2
     global p
 
@@ -192,7 +184,7 @@ def health_registration(a ):
 
 #window anzeige
 
-def redrawWindow(win, player, player2):
+def redrawWindow(win, player, player2): #was auf dem screen sichtbar ist
     pygame.font.init()
 
     my_font = pygame.font.SysFont('Comic Sans MS', 20)
@@ -213,14 +205,14 @@ def redrawWindow(win, player, player2):
 
 
 
-#ddd
+#Spiel
 def main():
     #global winner
     #global loser
 
     run = True
-    winner = pygame.image.load('uwin.png')
-    loser = pygame.image.load('ulose.png')
+    winner = pygame.image.load('uwin.png')  #winner screen
+    loser = pygame.image.load('ulose.png') #loser screen
     """n = Network()
     p = n.getP()  #ist jetzt oben drinn muss was überprüfen 
     t = n.getP()"""
@@ -230,58 +222,50 @@ def main():
 
     health_points = p2.hp
     current_time = 0
-    go1 = True
+    go1 = True #bedingung für runden bassiertes system
     go2 = False
-    zeit = 0
+    zeit = 0 #beides variablen für die zeit rechnung un runden basierung
     zeitb = 60
-    lose = False
+    lose = False #winning variable
     winning = False
 
 
     barrelrotation = 230
     while run:
-        clock.tick(20)  #30 fps kamen von Konrad und Hannes deshalb ok wenn die Idee von Willi käme dann hätten wäre es fatal und falsch
+        clock.tick(20)  #20 fps
         p2 = n.send(p)
-        zeit = zeit + 1
+        zeit = zeit + 1 # timer zähler variable
 
 
 
 
 
         """if lose:
-            win.blit(loser, (0, 0))
+            win.blit(loser, (0, 0)) das war der erste ansatz für die winner screens 
 
         elif winning:
             win.blit(winner, (0, 0))"""
 
 
-#k
-
-
-        for event in pygame.event.get():
+        for event in pygame.event.get(): #quit möglichkeit
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-#heheh
-        p.tank_move()
+
+        p.tank_move()  #movement logic
         if zeit == zeitb:   #runden logic
             go1 = False
             go2 = True # ll
         elif zeit == zeitb * 2:
             go1 = True
-            go2 = False ##l,l,l,
+            go2 = False #go1 und go2 stehen hier für die zweite variable in der "and" funktion
             zeit = 0
 
 
-
-
-
-
-#l
         #print(p)
         #print(p2)
         #print(p.x)
-        #print(p.y)
+        #print(p.y)     alles hier sind daten zum testen gewesen
         #print(p2.x)
         #print(p2.y)
         redrawWindow(win, p, p2)
@@ -289,13 +273,8 @@ def main():
         bulletx = p.x"""
 
 
-
-
-
-
-
         if p.id == "Player 1":
-            win.blit(roter_panzer, (p2.x + 50, p2.y))
+            win.blit(roter_panzer, (p2.x + 50, p2.y))  #bei beiden Playern werden die ansichten bestimmt also wo sie was wie wo sehen
             win.blit(blauer_panzer, (p.x, p.y))
 
         if p.id == "Player 2":
@@ -303,11 +282,7 @@ def main():
             win.blit(blauer_panzer, (p2.x, p2.y))
 
 
-
-
-
-
-        if p.id == "Player 1" and go1 :
+        if p.id == "Player 1" and go1 : #und ermöglicht runden bassierung Player 1 ist ID vom server
             blaueshartesding = pygame.transform.rotate(blaues_hartes_ding_turned, barrelrotation)
             keys = pygame.key.get_pressed()
             barrelrotation = 230
@@ -321,24 +296,24 @@ def main():
                 win.blit(loser, (0, 0))
 
             if winning:
-                win.blit(winner, (0, 0))
+                win.blit(winner, (0, 0))   #lassen die screens für winning auf flickern
 
             print(p2.x)
-            if p.x >= 2500:
+            if p.x >= 2500: #die position des spielers wird genutzt um den gewinner zu erfassen, ist eine einfache art dies zu tun
                 print('Super win')
                 winning = True
 
-            if p2.x >= 2500 or (p.x + 1800) < p2.x:
+            if p2.x >= 2500 or (p.x + 1800) < p2.x:   # -/-/-
                 print('you lose')
                 lose = True
 
 
 
-            if keys[pygame.K_UP] and barrelrotation <= 240:
+            if keys[pygame.K_UP] and barrelrotation <= 240: # rotation des Kanonen laufs und schieß winkel
                 barrelrotation = barrelrotation + 5
                 bullet_grad_plus()
 
-            if keys[pygame.K_DOWN] and barrelrotation >= 180:
+            if keys[pygame.K_DOWN] and barrelrotation >= 180: # rotation des Kanonen laufs und schieß winkel
                 barrelrotation = barrelrotation - 5
                 bullet_grad_minus()
 
@@ -355,30 +330,30 @@ def main():
                 bullet_kurz()
                 #print('Staerke: '+ bullet_staerke)
 
-            if keys[pygame.K_q]:
+            if keys[pygame.K_q]:     # erste winkel einstellung wurde jetzt mit pfeil verknüpft +
                 bullet_grad_plus()
                 #print('Winkel: '+ bullet_winkel)
 
-            if keys[pygame.K_a]:
+            if keys[pygame.K_a]:  # erste winkel einstellung wurde jetzt mit pfeil verknüpft -
                 bullet_grad_minus()
                 #print('Winkel: '+bullet_winkel)
-            if keys[pygame.K_r]:
+            if keys[pygame.K_r]:   #reset knopf
                 reset_bullet_trajectory()
                 barrelrotation = 230
             #if statement für px (muss noch bei p2 rein)
 
 
-            if keys[pygame.K_SPACE]:
+            if keys[pygame.K_SPACE]: #schießen
                # print('Hello i am under the water')
 
 
                 fire_bullet(p.x , p.y )
                 distanz = 0
-#schießlogic
+#schießlogic beginnt hier
 
             if bullet_state is True:
 
-                 bulletx = p.x
+                 bulletx = p.x # nimmt position vom spieler
                  bullety = p.y
                  bullet_shoot = True
 
@@ -393,17 +368,17 @@ def main():
 
                         distanz = distanz + 2
 
-                     # if  else für ab hälfte das andere
+                     # if  else für ab hälfte das andere / logic für dreieck flugbahn
                         if distanz < (bullet_staerke  ):
                             variY = variY - (faky)
                             fire_bullet(bulletx + variX, bullety + variY)
                             if (bulletx + variX - 20) <= (p2.x) and (bulletx + variX + 20) >= (p2.x):  # das ganze ding ist die hitboxlogic
 
-                                if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y):
+                                if (bullety + variY - 20) <= (p2.y) and (bullety + variY + 20) >= (p2.y): #hitboxlogic
                                     print('hit')
                                     health_points = health_points - 5
                                     print(health_points)
-                                    health_registration(health_points)
+                                    health_registration(health_points) # dies funktion wiederholt sich um alle fälle ab zu decken
 
 
                         elif distanz > (bullet_staerke  ):# and distanz != (bullet_staerke*4)
@@ -432,7 +407,9 @@ def main():
 
 
 
-                     if p.x >= 2500:
+
+
+                     if p.x >= 2500:       #als absicherung
                         print('Super win')
                         winning = True
 
@@ -473,7 +450,7 @@ def main():
 
 
             """ bullet_group.add(Bullegame.create_bullet(p.x, p.y)) """
-        if p.id == "Player 2" and go2:
+        if p.id == "Player 2" and go2: # die logic aus Player 1 ist hier quasie gleich nur das vorzeichen entsprechen getauscht worden sind
             blaueshartesding = pygame.transform.rotate(rotes_hartes_ding_turned, barrelrotation)
             keys = pygame.key.get_pressed()
             barrelrotation = 300
@@ -626,7 +603,7 @@ def main():
 
 
 run = True
-while run:
+while run: #start
 
     screen.fill((0, 0, 0))
     logo_img.draw(screen)
