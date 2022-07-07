@@ -6,7 +6,7 @@ import pygame
 
 
 #ip
-server = "192.168.2.108" #hier IP adresse einfügen
+server = "" #hier IP adresse einfügen
 port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
