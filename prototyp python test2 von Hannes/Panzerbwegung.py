@@ -4,24 +4,24 @@ import pygame
 #ddd
 
 class Player():   #alles hier wird an den server gesendet
-    def __init__(self, x, y, height, width, color, id, hp, run):
-        self.x = x
+    def __init__(self, x, y, height, width, color, id, hp, run): # was im spieler drin ist
+        self.x = x       #Koordinaten
         self.y = y
-        self.width = width
-        self.height = height
-        self.color = color
-        self.id = id
-        self.rect = (x, y, width, height)
-        self.vel = 5
-        self.vel2 = 0.5
-        self.hp = hp
-        self.run = run
+        self.width = width #breite
+        self.height = height #höhe
+        self.color = color #farbe
+        self.id = id  #player "nummer"
+        self.rect = (x, y, width, height) #Würfel bildung
+        self.vel = 5 #geschwindigkeit beim fahren
+        self.vel2 = 0.5 # war geadacht für turret wurde aber anders implementiert
+        self.hp = hp # lebenspunkte
+        self.run = run #variable für funktion
 
     def draw(self, win):
         pygame.draw.rect(win, self.color, self.rect)
 
 
-    def tank_move(self):
+    def tank_move(self):   #panzer bewegung, rechts links
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_LEFT]:
@@ -32,7 +32,7 @@ class Player():   #alles hier wird an den server gesendet
 
         self.update()
 
-    def turret_move(self):
+    def turret_move(self):  # Turret bewegung, wurde anders gelöst
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_UP]:
@@ -43,7 +43,7 @@ class Player():   #alles hier wird an den server gesendet
 
         self.update()
 
-    def update(self):
+    def update(self):  #update methode zum anzeigen
         self.rect = (self.x, self.y, self.width, self.height)
         self.turr = self.y
 

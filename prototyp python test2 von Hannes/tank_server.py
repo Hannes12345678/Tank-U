@@ -6,7 +6,7 @@ import pygame
 
 
 #ip
-server = "192.168.2.108" #192.168.2.108 kf #134.103.111.15
+server = "192.168.2.108" #hier IP adresse einfügen
 port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -15,12 +15,12 @@ try:
     s.bind((server, port))
 except socket.error as e:
     str(e)
-
+              #wartet auf zwei verbindungen
 s.listen(2)
 print("Waiting for a connection, Server Started")
 
 #was in den playern drin ist
-
+#in Panzerbewegung ist genau was drin ist
 players = [Player(100,316,0,0,(255,0,0), "Player 1", 1000, True), Player(600, 320, 0,0,(0,0,255), "Player 2", 1000, False)]
 
 
@@ -29,9 +29,9 @@ def threaded_client(conn, player):
     conn.send(pickle.dumps(players[player]))
 
     reply = ""
-    while True:
+    while True: #actual server funktion
         try:
-            data = pickle.loads(conn.recv(8192))
+            data = pickle.loads(conn.recv(8192))          # daten hin und her sendung
             players[player] = data
 
 
@@ -43,7 +43,7 @@ def threaded_client(conn, player):
                     reply = players[0]
                 else:
                     reply = players[1]
-                print("Received: ", data)
+                print("Received: ", data) #sobald verbunden ist
                 print("Sending : ", reply)
 
             conn.sendall(pickle.dumps(reply))
@@ -51,11 +51,11 @@ def threaded_client(conn, player):
         except:
             break
 
-    print("Lost connection")
+    print("Lost connection")  #nach disconect bzw wenn man client schließt
     conn.close()
 
 currentPlayer = 0
-while True:
+while True:    #server start und running
     conn, addr = s.accept()
     print("Connected to:", addr)
 
