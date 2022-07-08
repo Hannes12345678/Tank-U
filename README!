@@ -15,11 +15,11 @@ Tank-U ist ein netzwerkfähiges Mehrspieler Videospiel geschrieben in Python. Da
 vom Prinzip auf altbekannten Panzer Spielen wie Tank Wars oder neueren Titeln wie Shellshock Live.
 Inspiriert davon haben wir hier, im Ramen unseres Praxisprojekts, ein 2D Panzer Kampfspiel gebaut.
 Das Ziel im Spiel ist es als erster den Gegnerischen Panzer zu zerstören und somit die Schlacht zu
-gewinnen. Wir wünschen Ihnen ganz viel Spaß beim Zocken!
+gewinnen. Wir wünschen Ihnen viel Spaß beim Zocken!
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Das brauch ich um Tank-U zu spielen...
+Das brauch ich, um Tank-U zu spielen...
 
 - Python             3.8
 - pygame	         2.1.2
@@ -32,27 +32,27 @@ Das brauch ich um Tank-U zu spielen...
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Um TANK-U zu starten muss ich...
+Um TANK-U zu starten, muss ich...
 
 (Das Spiel befindet sich aktuell im Ordner "prototyp python test2 von Hannes" das ist deswegen da wir dort als erstes
-den Server plus Client zum laufen bekommen haben und wir dort mit der zeit weiter gecoded haben )
+den Server plus Client zum Laufen bekommen haben und wir dort mit der Zeit weiter gecoded haben )
  ...als erstes den Ordner "prototyp python test2 von Hannes" öffnen
  ...dort muss ich in der Datei "tank_server" und in "tank_network" die IP vom Computer eingeben welcher sich im selben
-    Netzwerk befindet und auf dem der Server Laufen soll. (PS: am besten einfach einen Computer auf dem man dann Zockt.)
- (Info: beide Computer müssen bei sich die selbe IP eintragen, man kann aber auch tank_client zweimal ausführen)
- ... jetzt kann man den server starten
+    Netzwerk befindet und auf dem der Server Laufen soll. (PS: am besten einfach einen Computer auf dem man dann zockt.)
+ (Info: beide Computer müssen bei sich die gleiche IP eintragen, man kann aber auch tank_client zweimal ausführen)
+ ... jetzt kann man den Server starten
  ... anschließend tank_client starten
- ...schon kann man zocken
- ...nach jedem match muss man server und clients neustarten
+ ... schon kann man zocken
+ ... nach jedem Match muss man Server und Clients neustarten
 
-Vielspaß!
+Viel Spaß!
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Datum: 07.07.2022
 Aktuelle bekannte Bugs:
-- Hitboxen sind nicht ganz auf der selben Position wie die Bilder der Panzer
-- Flackern der Spieler, wegen server logic
-- Winkel Einstellung etwas fehlerhaft, bleibt stecken  -> quickfix reset button auf R
+- Hitboxen sind nicht ganz auf der gleichen Position wie die Bilder der Panzer
+- Flackern der Spieler, aufgrund von server logic
+- Winkel Einstellung etwas fehlerhaft, bleibt stecken --> quickfix reset button auf R
 - Flackern von Winner und Loser Screen
 
 Bugs die behoben werden bis zur Präsentation:
