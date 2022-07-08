@@ -1,21 +1,21 @@
 Praxisprojekt Softwareentwicklung
 
-Projekt: Netzwerkfähiges mehrspieler Python Game ( NMPG )
+Projekt: Netzwerkfähiges Mehrspieler Python Game ( NMPG )
 
 Titel: TANK-U
 V: 1.0
 
-Entwickelt von: Hannes Sattler(804846), Willi Siedlaczeck(805374), Konrad Firley (804764)
+Entwickelt von: Hannes Sattler(804846), Willi Siedlaczek(805374), Konrad Firley (804764)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Was ist TANK-U?
 
-Tank-U ist ein netzwerkfähiges mehrspieler Videospiel geschrieben in Python. Das Spiel basiert
+Tank-U ist ein netzwerkfähiges Mehrspieler Videospiel geschrieben in Python. Das Spiel basiert
 vom Prinzip auf altbekannten Panzer Spielen wie Tank Wars oder neueren Titeln wie Shellshock Live.
-Inspiriert davon haben wir hier, im Ramen unseres Praxisprojekts, ein 2D Panzer Kampf spiel gebaut.
+Inspiriert davon haben wir hier, im Ramen unseres Praxisprojekts, ein 2D Panzer Kampfspiel gebaut.
 Das Ziel im Spiel ist es als erster den Gegnerischen Panzer zu zerstören und somit die Schlacht zu
-gewinnen. Wir wünschen ihnen ganz viel Spaß beim Zocken!
+gewinnen. Wir wünschen Ihnen ganz viel Spaß beim Zocken!
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
