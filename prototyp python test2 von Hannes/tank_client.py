@@ -274,15 +274,15 @@ def main():
 
 
         if p.id == "Player 1":
-            win.blit(roter_panzer, (p2.x + 50, p2.y))  #bei beiden Playern werden die ansichten bestimmt also wo sie was wie wo sehen
+            win.blit(roter_panzer, (p2.x + 70, p2.y))  #bei beiden Playern werden die ansichten bestimmt also wo sie was wie wo sehen
             win.blit(blauer_panzer, (p.x, p.y))
 
         if p.id == "Player 2":
             win.blit(roter_panzer, (p.x, p.y ))
-            win.blit(blauer_panzer, (p2.x, p2.y))
+            win.blit(blauer_panzer, (p2.x - 5, p2.y))
 
 
-        if p.id == "Player 1" and go1 : #und ermöglicht runden bassierung Player 1 ist ID vom server
+        if p.id == "Player 1" and go1 : #und ermöglicht runden Basierung Player 1 ist ID vom server
             blaueshartesding = pygame.transform.rotate(blaues_hartes_ding_turned, barrelrotation)
             keys = pygame.key.get_pressed()
             barrelrotation = 230
@@ -319,7 +319,7 @@ def main():
 
             win.blit(blaueshartesding, (p.x + 85- int(blaueshartesding.get_width() / 2), p.y + 75  - int(blaueshartesding.get_height() / 2)))
 
-            win.blit(rotes_hartes_ding_turned, (p2.x + 65, p2.y + 75 ))
+            win.blit(rotes_hartes_ding_turned, (p2.x + 85, p2.y + 75 ))
             #print(barrelrotation)
 #hier shooting mech p1
             if keys[pygame.K_w]:  #flugdauer + bzw vershiebt den hochpunkt
@@ -486,7 +486,7 @@ def main():
             win.blit(blaueshartesding, (
             p.x + 30 - int(blaueshartesding.get_width() / 2), p.y + 75 - int(blaueshartesding.get_height() / 2)))
 
-            win.blit(blaues_hartes_ding, (p2.x + 0, p2.y + 0))
+            win.blit(blaues_hartes_ding, (p2.x - 5, p2.y + 0))
             # print(barrelrotation)
             # hier shooting mech p1
             if keys[pygame.K_w]:  # flugdauer + bzw vershiebt den hochpunkt
